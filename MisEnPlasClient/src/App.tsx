@@ -1,12 +1,14 @@
 import React from 'react'
 import { Container } from 'reactstrap'
 import Auth from './Components/Auth/Auth'
+import './App.scss'
+
 
 function App() {
   return (
-    <Container>
-      <Auth/>
-    </Container>
+    <div>
+      <Auth />
+    </div>
   )
 }
 

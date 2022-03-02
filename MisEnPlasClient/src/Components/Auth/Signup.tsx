@@ -80,7 +80,7 @@ class Signup extends Component <SignupProps, SignupState> {
                     </FormGroup>
                     <FormGroup>
                         <Label for="password">Role</Label>
-                        <Input id="li_password" type='select' name="role" placeholder="enter password" onChange={(e:any) => this.setState({firstName: e.target.value})} value={this.state.role}> 
+                        <Input id="li_password" type='select' name="role" placeholder="enter password" onChange={(e:any) => this.setState({role: e.target.value})} value={this.state.role}> 
                         <option> BOH </option>
                         <option> FOH </option>
                         <option> Admin </option>

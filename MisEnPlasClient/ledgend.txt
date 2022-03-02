@@ -1,0 +1,9 @@
+challenge01 (Typescript)- Props Practice using Unsplash to display photo
+challenge02 (Typescript) - API Fetch (Advice Slip)
+challenge03 (JS) - Passing Props converting Function to Class
+challenge 04 (JS) - updating state on button click Function to Class
+diceproject - a lesson to show how we can pass props and setState to a child
+cleanreact - a branch we can go to so we can branch off of it to get a clean react install starting point
+typscript01 - typescript basics
+typescript02 - fetching and interface building - chuck fetch and rick and morty vanilla js
+stateclassfetch - used for non typescript converting functional to class component demonstrating fetch

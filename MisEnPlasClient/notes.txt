@@ -1,0 +1,8 @@
+snippits to use
+
+ccc = creating the class components
+
+cdm = component did mount
+
+cdu = component did update
+

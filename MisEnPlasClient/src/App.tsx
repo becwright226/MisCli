@@ -1,14 +1,50 @@
 import React from 'react'
-import { Container } from 'reactstrap'
+import { Button, Col, Container, Row } from 'reactstrap'
 import Auth from './Components/Auth/Auth'
-import './App.scss'
+import { useState, useEffect } from 'react';
+import SiteBar from './Components/Navbar/Navbar';
 
 
-function App() {
+
+
+const App = () => {
+  const [token, setToken] = useState<string | null>('');
+
+  
+  
+  useEffect(() => {
+    if (localStorage.getItem('token')){
+      setToken(localStorage.getItem("token"))
+    }
+  }, []);
+  
+  const updateLocalStorage = (newToken: string) => {
+    localStorage.setItem('token', newToken);
+    setToken(newToken)
+  }
+
+
+
+  const clearLocalStorage = () => {
+    localStorage.clear();
+    setToken('')
+  }
+
   return (
-    <div>
-      <Auth />
-    </div>
+    <>
+    <SiteBar/> 
+    <Container className='App'>
+       
+      <Row>
+      <Col>
+      <Auth updateLocalStorage={updateLocalStorage} />
+      <div>
+        <Button onClick={clearLocalStorage}> Logout </Button>
+      </div>
+      </Col>
+      </Row>
+    </Container>
+    </>
   )
 }
 

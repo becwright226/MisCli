@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import './Style.scss'
 
 interface SignupProps {
-  
+    updateLocalStorage: (newToken: string) => void
 }
  
 interface SignupState {
@@ -22,11 +23,11 @@ class Signup extends Component <SignupProps, SignupState> {
             lastName: '',
             email: '',
             password: '',
-            role: ''
+            role: 'BOH'
         };
     }
 
-    handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const requestObject = {
             firstName: this.state.firstName,
@@ -35,25 +36,30 @@ class Signup extends Component <SignupProps, SignupState> {
             password: this.state.password,
             role: this.state.role
         }
-        fetch("http://localhost:2206/user/register", {
+        try{
+          
+        const res= await fetch("http://localhost:2206/user/register", {
+           
             method: 'POST',
-            body: JSON.stringify({requestObject}),
+            body: JSON.stringify(requestObject),
             headers: new Headers({
                 'Content-Type': 'application/json'
               })
-        }).then(
-            (response) => response.json()
-        ).then((data) => {
-            console.log(data)
-            this.setState({
-                firstName:'',
+        })
+        const data =await res.json()
+        this.props.updateLocalStorage(data.token)
+    
+           this.setState({
+              firstName:'',
                 lastName:'', 
-                email:'',
-                password:'', 
-                role: ''
-            })
-            
-        }) 
+              email:'',
+              password:'', 
+              role: 'BOH'
+           })
+        } catch (error) {
+            console.log({error})
+        }      
+         
       
     }
 
@@ -82,11 +88,11 @@ class Signup extends Component <SignupProps, SignupState> {
                         <Label for="password">Role</Label>
                         <Input id="li_password" type='select' name="role" placeholder="enter password" onChange={(e:any) => this.setState({role: e.target.value})} value={this.state.role}> 
                         <option> BOH </option>
-                        <option> FOH </option>
-                        <option> Admin </option>
+                        <option > FOH </option>
+                        <option > Admin </option>
                         </Input>
                     </FormGroup>
-                    <Button type="submit"> Submit </Button>
+                    <Button type="submit" className="btn" > Submit </Button>
                 </Form>
             </div>
         )

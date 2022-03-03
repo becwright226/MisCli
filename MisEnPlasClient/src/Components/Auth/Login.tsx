@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import './Style.scss'
+import './style.scss'
 import AuthImg from '../../assets/misAuthBkg.jpeg'
 
 

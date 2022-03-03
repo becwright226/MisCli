@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { Container } from 'reactstrap';
 import Login from './Login';
 import Signup from './Signup';
-import './Style.scss'
+import './style.scss'
 
 interface AuthProps {
     updateLocalStorage: (newToken: string) => void

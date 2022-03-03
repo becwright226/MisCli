@@ -3,6 +3,7 @@ import { Button, Col, Container, Row } from 'reactstrap'
 import Auth from './Components/Auth/Auth'
 import { useState, useEffect } from 'react';
 import SiteBar from './Components/Navbar/Navbar';
+import Post from './Components/Post/Post';
 
 
 
@@ -37,7 +38,12 @@ const App = () => {
        
       <Row>
       <Col>
-      <Auth updateLocalStorage={updateLocalStorage} />
+      
+      {!token ? (
+           <Auth updateLocalStorage={updateLocalStorage}/>  
+          ):(
+            <Post token={token}/>
+          )}
       <div>
         <Button onClick={clearLocalStorage}> Logout </Button>
       </div>

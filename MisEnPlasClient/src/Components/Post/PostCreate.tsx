@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
-    Card, 
-    CardBody, 
-    CardImg, 
+    
     Container,
     Row,
     Col,

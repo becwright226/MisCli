@@ -7,8 +7,6 @@ import {
     Row,
     Col
 } from 'reactstrap';
-import {Route, Link, Routes} from 'react-router-dom'
-import { BrowserRouter as Router } from 'react-router-dom';
 import PostCreate from './PostCreate';
 
 

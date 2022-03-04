@@ -33,7 +33,6 @@ const App = () => {
 
   return (
     <>
-    <Main clearLocalStorage={clearLocalStorage}/> 
     <Container className='App'>
        
       <Row>
@@ -42,7 +41,7 @@ const App = () => {
       {!token ? (
            <Auth updateLocalStorage={updateLocalStorage}/>  
           ):(
-            <Post token={token}/>
+            <Main token={token} clearLocalStorage={clearLocalStorage}/>
           )}
       <div>
         <Button onClick={clearLocalStorage}> Logout </Button>

@@ -15,8 +15,9 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
        // this.state = { :  };
     }
     render() { 
+        
         return (  <Container>
-            <h1>Hello from Recipe</h1>
+            <h1>Hello from RecipeIndex</h1>
         </Container>);
     }
 }

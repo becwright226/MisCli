@@ -1,18 +1,22 @@
 import React from 'react';
-import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 interface SiteBarProps {
     clearLocalStorage: (token: string) => void
 }
+interface SiteBarState {
+    token:string
+}
  
 
-
  
-class SiteBar extends React.Component<SiteBarProps> {
+class SiteBar extends React.Component<SiteBarProps, SiteBarState> {
     constructor(props: SiteBarProps) {
         super(props);
     
     }
+
+    
     render() { 
 
     return (
@@ -20,21 +24,21 @@ class SiteBar extends React.Component<SiteBarProps> {
             <NavbarBrand href="/">
                 Home
             </NavbarBrand>
-            <Nav className="ml-auto">
+            <Nav className="ml-auto" clearLocalStorage={this.props.clearLocalStorage}>
                 <NavItem>
-                    <Link to="/order" className="site-link"> Orders </Link>
+                    <NavLink><Link to='/order' className="site-link"> Orders </Link></NavLink>
                 </NavItem>
                 <NavItem>
-                    <Link to="/recipe" className="site-link"> Recipes </Link>
+                   <NavLink><Link to="/recipe" className="site-link"> Recipes </Link></NavLink> 
                 </NavItem>
                 <NavItem>
-                    <Link to="/diary" className="site-link"> Shift Diary </Link>
+                    <NavLink><Link to="/diary" className="site-link"> Shift Diary </Link></NavLink>
                 </NavItem>
                 <NavItem>
-                    <Link to="/schedule" className="site-link"> Schedules </Link>
-                </NavItem>
+                    <NavLink><Link to="/schedule" className="site-link"> Schedules </Link></NavLink>
+                </NavItem>   
                 <NavItem>
-                    <Link to="/logout" className="site-link" onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.props.clearLocalStorage}> Logout </Link>
+                <NavLink> <Button token={this.props.clearLocalStorage}> Logout </Button></NavLink>
                 </NavItem>
             </Nav>
         </Navbar>
@@ -43,3 +47,7 @@ class SiteBar extends React.Component<SiteBarProps> {
 };
 
 export default SiteBar;
+
+///<NavItem>
+//<NavLink onClick={this.handleClick}><Link to="/logout" className="site-link"> Logout </Link></NavLink>
+//</NavItem>

@@ -13,7 +13,8 @@ import PostCreate from './PostCreate';
 
 
 interface PostProps {
-    token: string
+    token: string,
+    
     
 }
  

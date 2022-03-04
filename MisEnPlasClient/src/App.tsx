@@ -2,8 +2,8 @@ import React from 'react'
 import { Button, Col, Container, Row } from 'reactstrap'
 import Auth from './Components/Auth/Auth'
 import { useState, useEffect } from 'react';
-import SiteBar from './Components/Navbar/Navbar';
 import Post from './Components/Post/Post';
+import Main from './Components/Navbar/Main';
 
 
 
@@ -33,7 +33,7 @@ const App = () => {
 
   return (
     <>
-    <SiteBar/> 
+    <Main clearLocalStorage={clearLocalStorage}/> 
     <Container className='App'>
        
       <Row>

@@ -1,28 +1,45 @@
-import * as React from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
-
+import React from 'react';
+import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 interface SiteBarProps {
-    
+    clearLocalStorage: (token: string) => void
 }
  
-interface SiteBarState {
-    
-}
+
+
  
-class SiteBar extends React.Component<SiteBarProps, SiteBarState> {
+class SiteBar extends React.Component<SiteBarProps> {
     constructor(props: SiteBarProps) {
         super(props);
-       // this.state = { :  };
+    
     }
     render() { 
-        return ( <div>
-            <Navbar light style={{backgroundColor:'orange', borderBottom: 'solid black 4px'}}>
-              <NavbarBrand href="/" className="mr-auto" style={{fontFamily: 'Moo Lah Lah', fontSize: '35px', color: 'black'}}>
-                Mis En Plas
-              </NavbarBrand>
-            </Navbar>
-          </div> );
-    }
+
+    return (
+        <Navbar color="dark" dark expand="md">
+            <NavbarBrand href="/">
+                Home
+            </NavbarBrand>
+            <Nav className="ml-auto">
+                <NavItem>
+                    <Link to="/order" className="site-link"> Orders </Link>
+                </NavItem>
+                <NavItem>
+                    <Link to="/recipe" className="site-link"> Recipes </Link>
+                </NavItem>
+                <NavItem>
+                    <Link to="/diary" className="site-link"> Shift Diary </Link>
+                </NavItem>
+                <NavItem>
+                    <Link to="/schedule" className="site-link"> Schedules </Link>
+                </NavItem>
+                <NavItem>
+                    <Link to="/logout" className="site-link" onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.props.clearLocalStorage}> Logout </Link>
+                </NavItem>
+            </Nav>
+        </Navbar>
+    );
 }
- 
+};
+
 export default SiteBar;

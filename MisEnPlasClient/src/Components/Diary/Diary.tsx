@@ -53,7 +53,7 @@ class DiaryCreate extends Component<DiaryCreateProps, DiaryCreateState> {
     render() { 
         return (  
             <>
-        <Container>
+       
         <Form onSubmit={this.handleSubmit}>
             <FormGroup>
                         <Label for="date"> Date </Label>
@@ -69,7 +69,7 @@ class DiaryCreate extends Component<DiaryCreateProps, DiaryCreateState> {
                     </FormGroup>
                     <Button type="submit" className="btn" > Submit </Button>
             </Form>
-        </Container>
+      
         </>
        );
     }

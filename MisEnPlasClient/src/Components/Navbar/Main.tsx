@@ -29,7 +29,7 @@ class Main extends React.Component<MainProps> {
                     <Route path="/order" element={ <Order/> } />
                     <Route path="/recipe" element={ <Recipe token={this.props.token} /> } />
                     <Route  path="/diary" element={ <Diary token={this.props.token}/> } />
-                    <Route  path="/schedule" element={ <SchedIndex /> } />
+                    <Route  path="/schedule" element={ <SchedIndex token={this.props.token} /> } />
                   
                 </Routes>
             </Router>

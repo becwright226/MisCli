@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Container } from 'reactstrap';
+import SchedCreateIndex from './Schedule';
 
 interface SchedIndexProps {
-    
+    token: string
 }
  
 interface SchedIndexState {
@@ -15,8 +16,9 @@ class SchedIndex extends React.Component<SchedIndexProps, SchedIndexState> {
         //this.state = { :  };
     }
     render() { 
-        return ( <Container>
-            <h1>Hello from SchedIndex</h1>
+        return ( 
+        <Container>
+           <SchedCreateIndex token={this.props.token}/>
         </Container> );
     }
 }

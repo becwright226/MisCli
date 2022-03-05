@@ -33,16 +33,14 @@ const App = () => {
 
   return (
     <>
-    <Container className='App'>
-       
-      <Row>
-      <Col>
-      
-      {!token ? (
+     {!token ? (
            <Auth updateLocalStorage={updateLocalStorage}/>  
           ):(
             <Main token={token} clearLocalStorage={clearLocalStorage}/>
           )}
+    <Container className='App'>
+      <Row>
+      <Col>
       <div>
         <Button onClick={clearLocalStorage}> Logout </Button>
       </div>

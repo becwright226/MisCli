@@ -12,10 +12,12 @@ import {
 
 interface RecipeCreateProps {
     token: string
+   // role: 'Admin'?
 }
  
 interface RecipeCreateState {
-    style: string,
+   
+    cuisine: string,
     title: string,
     course: string,
     desc: string,
@@ -23,11 +25,11 @@ interface RecipeCreateState {
     method?: string
 }
  
-class Recipe extends React.Component<RecipeCreateProps, RecipeCreateState> {
+class RecipeCreate extends React.Component<RecipeCreateProps, RecipeCreateState> {
     constructor(props: RecipeCreateProps) {
         super(props);
         this.state = { 
-            style: '',
+            cuisine: '',
             title: '',
             course: '',
             desc: '',
@@ -39,7 +41,8 @@ class Recipe extends React.Component<RecipeCreateProps, RecipeCreateState> {
     handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
        e.preventDefault()
        const requestObject = {
-           style: this.state.style,
+           
+           cuisine: this.state.cuisine,
            title: this.state.title,
            course: this.state.course,
            desc: this.state.desc,
@@ -52,7 +55,7 @@ class Recipe extends React.Component<RecipeCreateProps, RecipeCreateState> {
                body: JSON.stringify(requestObject),
                headers: new Headers({
                    'Content-Type': 'application/json',
-                   'Authorization': this.props.token
+                   'Authorization': this.props.token,  //how do I pull my admin role in to this component?
                })
            })
            const data = await res.json()
@@ -65,11 +68,12 @@ class Recipe extends React.Component<RecipeCreateProps, RecipeCreateState> {
     render() { 
         return (  
             <>
-        <Container>
-        <Form onSubmit={this.handleSubmit}>
-            <FormGroup>
-                        <Label for="style"> Style </Label>
-                        <Input id="li_style" type="text" name="style" placeholder="ex. French" onChange={(e:any) => this.setState({style: e.target.style})} value={this.state.style} />
+      
+        <Form onSubmit={this.handleSubmit} className='recipe-create'>
+
+                    <FormGroup>
+                        <Label for="cuisine"> Cuisine </Label>
+                        <Input id="li_style" type="text" name="cuisine" placeholder="ex. French" onChange={(e:any) => this.setState({cuisine: e.target.cuisine})} value={this.state.cuisine} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="title"> Recipe Name </Label>
@@ -99,10 +103,10 @@ class Recipe extends React.Component<RecipeCreateProps, RecipeCreateState> {
                     </FormGroup>
                     <Button type="submit" className="btn" > Submit </Button>
             </Form>
-        </Container>
+       
         </>
        );
     }
 }
  
-export default Recipe;
+export default RecipeCreate;

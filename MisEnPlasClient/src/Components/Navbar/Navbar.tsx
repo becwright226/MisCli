@@ -20,11 +20,11 @@ class SiteBar extends React.Component<SiteBarProps, SiteBarState> {
     render() { 
 
     return (
-        <Navbar color="dark" dark expand="md">
+        <Navbar color="dark" dark expand="lg">
             <NavbarBrand href="/">
                 Home
             </NavbarBrand>
-            <Nav className="ml-auto" clearLocalStorage={this.props.clearLocalStorage}>
+            <Nav className="ml-auto" >
                 <NavItem>
                     <NavLink><Link to='/order' className="site-link"> Orders </Link></NavLink>
                 </NavItem>

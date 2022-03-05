@@ -10,7 +10,7 @@ interface OrderCreateState {
   date: string,
   itemCount: number,
   desc: string,
-  isEvent: boolean,
+  isEvent: string,
   eventName?: string,
   cost: number  
 }
@@ -22,7 +22,7 @@ class OrderCreate extends Component<OrderCreateProps, OrderCreateState> {
             date: '',
             itemCount: 0,
             desc: '',
-            isEvent: false,
+            isEvent: "false",
             eventName: '',
             cost: 0 
         };
@@ -35,7 +35,7 @@ class OrderCreate extends Component<OrderCreateProps, OrderCreateState> {
             itemCount: this.state.itemCount,
             desc: this.state.desc,
             isEvent: this.state.isEvent,
-            eventName: this.state.eventName,
+            eventName: Boolean(this.state.eventName),
             cost: this.state.cost
         }
         try {
@@ -48,6 +48,15 @@ class OrderCreate extends Component<OrderCreateProps, OrderCreateState> {
                 })
             })
             const data = await res.json()
+
+            this.setState({
+                date: '',
+            itemCount: 0,
+            desc: '',
+            isEvent: "false",
+            eventName: '',
+            cost: 0   
+            })
         } catch (error) {
             console.log(error)
         }
@@ -61,19 +70,27 @@ class OrderCreate extends Component<OrderCreateProps, OrderCreateState> {
                         <Input id="li_date" type="date" name="date" placeholder="enter the date" onChange={(e:any) => this.setState({date: e.target.value})} value={this.state.date} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="title">Item Count</Label>
-                        <Input id="li_title" type="text" name="title" placeholder="enter a title for your post" onChange={(e:any) => this.setState({title: e.target.value})} value={this.state.title} />
+                        <Label for="itemCount">Item Count</Label>
+                        <Input id="li_itemCount" type="text" name='itemCount' placeholder="How many items?" onChange={(e:any) => this.setState({itemCount: e.target.value})} value={this.state.itemCount} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="content">Description</Label>
-                        <Input id="li_content" type='textarea' name="content" placeholder="make your announcement" onChange={(e:any) => this.setState({content: e.target.value})} value={this.state.content} />
+                        <Input id="li_desc" type='textarea' name="description" placeholder="ex. 3 cases bacon, 18 dz eggs, 10qt juice" onChange={(e:any) => this.setState({desc: e.target.value})} value={this.state.desc} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="role">Is there an event this week?</Label>
                         <Input id="li_role" type='select' name="role"  onChange={(e:any) => this.setState({isEvent: e.target.value})} value={this.state.isEvent}> 
-                        <option> true </option>
-                        <option > false </option>
+                        <option value='true'> Yes </option>
+                        <option value='false'> No </option>
                         </Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="eventName">Event Name</Label>
+                        <Input id="li_eventName" type='text' name="eventName" placeholder="ex. Devour Downtown" onChange={(e:any) => this.setState({eventName: e.target.value})} value={this.state.eventName} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="cost">Cost</Label>
+                        <Input id="li_cost" type='text' name="cost" placeholder="ex. $2,500.88" onChange={(e:any) => this.setState({cost: e.target.value})} value={this.state.cost} />
                     </FormGroup>
                     <Button type="submit" className="btn" > Submit </Button>
             </Form>

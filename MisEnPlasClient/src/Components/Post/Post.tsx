@@ -53,20 +53,7 @@ class Post extends Component <PostProps> {
      
      
             <Container onLoad={this.fetchPost}>
-            <Row>
-              <Col md='3'>
                 <PostCreate token={this.props.token}/>
-                </Col>
-              <Col md='9'>
-          
-        
-          
-              </Col>
-               
-            </Row>
-          
-          
-          
           </Container>
           
           </>

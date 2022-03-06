@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import './Auth.css'
 
 interface SignupProps {
-  
+    updateLocalStorage: (newToken: string) => void
 }
  
 interface SignupState {
@@ -22,11 +23,11 @@ class Signup extends Component <SignupProps, SignupState> {
             lastName: '',
             email: '',
             password: '',
-            role: ''
+            role: 'BOH'
         };
     }
 
-    handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const requestObject = {
             firstName: this.state.firstName,
@@ -35,58 +36,65 @@ class Signup extends Component <SignupProps, SignupState> {
             password: this.state.password,
             role: this.state.role
         }
-        fetch("http://localhost:2206/user/register", {
+        try{
+          
+        const res= await fetch("http://localhost:2206/user/register", {
+           
             method: 'POST',
-            body: JSON.stringify({requestObject}),
+            body: JSON.stringify(requestObject),
             headers: new Headers({
                 'Content-Type': 'application/json'
               })
-        }).then(
-            (response) => response.json()
-        ).then((data) => {
-            console.log(data)
-            this.setState({
-                firstName:'',
+        })
+        const data =await res.json()
+        this.props.updateLocalStorage(data.token)
+    
+           this.setState({
+              firstName:'',
                 lastName:'', 
-                email:'',
-                password:'', 
-                role: ''
-            })
-            
-        }) 
+              email:'',
+              password:'', 
+              role: 'BOH'
+           })
+        } catch (error) {
+            console.log({error})
+        }      
+         
       
     }
 
     render() {
         return (
-            <div>
+            <div className="auth-main p-4">
+                <Form onSubmit={this.handleSubmit} className="auth-form p-5 flex">
                 <h1>Signup</h1>
-                <Form onSubmit={this.handleSubmit} >
                     <FormGroup>
                         <Label for="firstname">First Name</Label>
-                        <Input id="li_firstname" type="text" name="firstname" placeholder="enter first name" onChange={(e:any) => this.setState({firstName: e.target.value})} value={this.state.firstName} />
+                        <Input className="input" style={{backgroundColor:'burlywood', width:'75%'}} type="text" name="firstname" placeholder="enter first name" onChange={(e:any) => this.setState({firstName: e.target.value})} value={this.state.firstName} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="lastname">Last Name</Label>
-                        <Input id="li_lastname" type="text" name="lastname" placeholder="enter last name" onChange={(e:any) => this.setState({lastName: e.target.value})} value={this.state.lastName} />
+                        <Input className="input-md" style={{backgroundColor:'burlywood',width:'75%' }} type="text" name="lastname" placeholder="enter last name" onChange={(e:any) => this.setState({lastName: e.target.value})} value={this.state.lastName} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="email">Email</Label>
-                        <Input id="li_email" type="email" name="email" placeholder="enter password" onChange={(e:any) => this.setState({email: e.target.value})} value={this.state.email} />
+                        <Input className="input-md" style={{backgroundColor:'burlywood',width:'75%'}} type="email" name="email" placeholder="enter password" onChange={(e:any) => this.setState({email: e.target.value})} value={this.state.email} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="password">Password</Label>
-                        <Input id="li_password" type="password" name="password" placeholder="enter password" onChange={(e:any) => this.setState({password: e.target.value})} value={this.state.password} />
+                        <Label className="password">Password</Label>
+                        <Input className="input-md" style={{backgroundColor:'burlywood',width:'75%'}} type="password" name="password" placeholder="enter password" onChange={(e:any) => this.setState({password: e.target.value})} value={this.state.password} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="password">Role</Label>
-                        <Input id="li_password" type='select' name="role" placeholder="enter password" onChange={(e:any) => this.setState({firstName: e.target.value})} value={this.state.role}> 
-                        <option> BOH </option>
-                        <option> FOH </option>
-                        <option> Admin </option>
+                        <Label for="role">Role</Label>
+                        <Input className="input-md" type='select' name="role" style={{backgroundColor:'burlywood',width:'75%'}} placeholder="enter password" onChange={(e:any) => this.setState({role: e.target.value})} value={this.state.role}> 
+                        <option style={{backgroundColor:'burlywood'}}> BOH </option>
+                        <option style={{backgroundColor:'burlywood'}}> FOH </option>
+                        <option style={{backgroundColor:'burlywood'}}> Admin </option>
                         </Input>
                     </FormGroup>
-                    <Button type="submit"> Submit </Button>
+                    <Button type="submit" className="btn" > Submit </Button>
+                    <br/>
+                    <p><a href="/login">Already a user? Sign-in</a></p>
                 </Form>
             </div>
         )

@@ -1,0 +1,32 @@
+.auth-nav {
+    background-color: rgb(41, 61, 41);
+    font-family: 'Faustina', serif;
+    
+}
+
+.auth-main {
+    background: url('../../assets/Mepsign.jpeg')fixed;
+    background-size:cover;
+    height: 100%;
+    width: 100%;
+    font-family: 'Faustina', serif;
+    align-items: center;
+    flex: content;
+    flex-direction: column;
+}
+
+.auth-form {
+    width: 60%;
+    align-items: center;
+    flex: content;
+    flex-direction: column;
+    background-color: rgb(41, 61, 41);
+    opacity: 85%;
+    font-weight: bolder;
+    color: rgb(224, 231, 224);
+    font-family: 'Faustina', serif;
+}
+
+.footer {
+    background-color: rgb(41, 61, 41);
+}

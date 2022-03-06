@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Container } from 'reactstrap';
-import SchedCreateIndex from './Schedule';
+import SchedCreate from './ScheduleCreate';
+
 
 interface SchedIndexProps {
     token: string
@@ -18,7 +19,7 @@ class SchedIndex extends React.Component<SchedIndexProps, SchedIndexState> {
     render() { 
         return ( 
         <Container>
-           <SchedCreateIndex token={this.props.token}/>
+           <SchedCreate token={this.props.token}/>
         </Container> );
     }
 }

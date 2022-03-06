@@ -1,8 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import './style.scss'
-import AuthImg from '../../assets/misAuthBkg.jpeg'
-
+import './Auth.css'
 
 interface LoginProps {
     updateLocalStorage: (newToken: string) => void
@@ -42,41 +40,37 @@ class Login extends Component <LoginProps, LoginState> {
             (response) => response.json()
         ).then((data) => {
             console.log(data)
-            this.setState({
-                email:'',
-                password:'', 
-                role: ''
-            })
+           
             
         }) 
       
     }
 
+
     render() {
         return (
-            <div className="base-container mb-4" >
-                <h1 className="header">Login</h1>
-                <div className="content">
-                 
-                </div>
-                <Form onSubmit={this.handleSubmit} className="form mt-4" style={{background:'gray', width:'60%', borderRadius:'4px'}}>
-                    <FormGroup className="form-group">
-                        <Label className="label m-2" for="email" style={{fontFamily:'Times', color:'darkred'}}>Email:</Label>
-                        <Input style={{background:'beige', fontFamily:'Times', border:'0', borderRadius: '4px', marginBottom:'31px', transition:'all 250ms ease-in-out', width:'97%'}}  className="input m-2" type="email" name="email" placeholder="enter email" onChange={(e:any) => this.setState({email: e.target.value})} value={this.state.email} />
+            <div className="auth-main p-4 ">
+                <Form onSubmit={this.handleSubmit} className="auth-form p-5 flex">
+                <h1>Login</h1>
+                    <FormGroup>
+                        <Label for="email">Email</Label>
+                        <Input style={{backgroundColor:'burlywood', width:'75%'}} className="input" type="email" name="email" placeholder="enter email" onChange={(e:any) => this.setState({email: e.target.value})} value={this.state.email} />
                     </FormGroup>
                     <FormGroup>
-                        <Label style={{fontFamily:'Times', color:'darkred'}} className="label m-2" for="password">Password:</Label>
-                        <Input style={{background:'beige', fontFamily:'Times', border:'0', borderRadius: '4px', marginBottom:'31px', transition:'all 250ms ease-in-out', width:'97%'}} className="input m-2" type="password" name="password" placeholder="enter password" onChange={(e:any) => this.setState({password: e.target.value})} value={this.state.password} />
+                        <Label className="password">Password</Label>
+                        <Input style={{backgroundColor:'burlywood', width:'75%'}} className="input" type="password" name="password" placeholder="enter password" onChange={(e:any) => this.setState({password: e.target.value})} value={this.state.password} />
                     </FormGroup>
                     <FormGroup>
-                        <Label style={{fontFamily:'Times', color:'darkred'}} className="label m-2" for="role">Role:</Label>
-                        <Input style={{background:'beige', fontFamily:'Times', border:'0', borderRadius: '4px', marginBottom:'31px', transition:'all 250ms ease-in-out', width:'97%'}} className="input m-2" type='select' name="role" placeholder="enter password" onChange={(e:any) => this.setState({role: e.target.value})} value={this.state.role}> 
-                        <option> BOH </option>
-                        <option> FOH </option>
-                        <option> Admin </option>
+                        <Label for="role">Role</Label>
+                        <Input style={{backgroundColor:'burlywood', width:'75%'}} className="input" type='select' name="role" placeholder="enter password" onChange={(e:any) => this.setState({role: e.target.value})} value={this.state.role}> 
+                        <option style={{backgroundColor:'burlywood', width:'75%'}} > BOH </option>
+                        <option  style={{backgroundColor:'burlywood', width:'75%'}} > FOH </option>
+                        <option style={{backgroundColor:'burlywood', width:'75%'}} > Admin </option>
                         </Input>
                     </FormGroup>
-                    <div className="text-center m-4"> <Button type="submit" className="btn-lg m-2" style={{background:'darkred', fontFamily:'Times'}}> Login </Button></div>
+                    <Button type="submit" className="btn" > Submit </Button>
+                    <br/>
+                    <p><a href="/">New user? Sign-up</a></p>
                 </Form>
             </div>
         )
@@ -84,3 +78,4 @@ class Login extends Component <LoginProps, LoginState> {
 }
 
 export default Login;
+

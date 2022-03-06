@@ -1,8 +1,11 @@
 import * as React from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
+import { Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
+import {GiCook} from 'react-icons/gi'
+import '../Auth.css'
+import { Link } from 'react-router-dom';
 
 interface AuthBarProps {
-    
+  updateLocalStorage: (newToken: string) => void
 }
  
 interface AuthBarState {
@@ -14,16 +17,30 @@ class AuthBar extends React.Component<AuthBarProps, AuthBarState> {
         super(props);
        // this.state = { :  };
     }
+ 
     render() { 
         return ( <div>
-            <Navbar light style={{backgroundColor:'orange', borderBottom: 'solid black 4px'}}>
-              <NavbarBrand href="/" className="mr-auto" style={{fontFamily: 'Moo Lah Lah', fontSize: '35px', color: 'black'}}>
-                Mis En Plas
+           <Navbar dark expand-lg className='auth-nav'>
+              <NavbarBrand href={'/'} className="mr-auto">
+                Mis En Plas <GiCook/>
               </NavbarBrand>
-            </Navbar>
+              {/*<NavbarToggler className="mr-2" />*/}
+             {/* <Collapse navbar>*/}
+               <Nav navbar updateLocalStorage={this.props.updateLocalStorage}>
+              <NavItem>
+                <NavLink style={{fontFamily:'Faustina'}}> <Link to={'/login'}>Login</Link></NavLink>
+              </NavItem>
+            </Nav>
+          {/*</Collapse>*/}
+            </Navbar> 
+
+
+            
           </div> );
     }
 }
  
 export default AuthBar;
+
+
 

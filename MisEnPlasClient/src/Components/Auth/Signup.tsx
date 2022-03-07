@@ -66,7 +66,7 @@ class Signup extends Component <SignupProps, SignupState> {
     render() {
         return (
             <div className="auth-main p-4">
-                <Form onSubmit={this.handleSubmit} className="auth-form p-5 flex">
+                <Form onSubmit={this.handleSubmit} className="auth-form p-5" >
                 <h1>Signup</h1>
                     <FormGroup>
                         <Label for="firstname">First Name</Label>
@@ -74,7 +74,7 @@ class Signup extends Component <SignupProps, SignupState> {
                     </FormGroup>
                     <FormGroup>
                         <Label for="lastname">Last Name</Label>
-                        <Input className="input-md" style={{backgroundColor:'burlywood',width:'75%' }} type="text" name="lastname" placeholder="enter last name" onChange={(e:any) => this.setState({lastName: e.target.value})} value={this.state.lastName} />
+                        <Input className="input-md"  style={{backgroundColor:'burlywood',width:'75%' }} type="text" name="lastname" placeholder="enter last name" onChange={(e:any) => this.setState({lastName: e.target.value})} value={this.state.lastName} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="email">Email</Label>

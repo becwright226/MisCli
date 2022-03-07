@@ -62,8 +62,8 @@ class Post extends React.Component<PostCreateProps, PostCreateState> {
 
     render() { 
         return ( 
-            <>
-            <Form onSubmit={this.handleSubmit}>
+            <div className='postform m-4 p-3' style={{backgroundColor:'rgb(41, 61, 41)', opacity: '85%'}}>
+            <Form onSubmit={this.handleSubmit} >
             <FormGroup>
                         <Label for="date">Date</Label>
                         <Input id="li_date" type="date" name="date" placeholder="enter the date" onChange={(e:any) => this.setState({date: e.target.value})} value={this.state.date} />
@@ -87,7 +87,7 @@ class Post extends React.Component<PostCreateProps, PostCreateState> {
                     <Button type="submit" className="btn" > Submit </Button>
             </Form>
           
-            </>
+            </div>
          );
     }
 }

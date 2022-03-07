@@ -1,0 +1,11 @@
+.post-main {
+    background: url('../../assets/Postmep.jpeg')fixed;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    
+}
+
+.postcard {
+    background-color: #453c49
+}

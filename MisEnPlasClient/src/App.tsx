@@ -5,14 +5,15 @@ import { useState, useEffect } from 'react';
 import Main from './Components/Navbar/Main';
 import Footer from './Components/Footer/Footer';
 import AuthMain from './Components/Auth/Navbar/AuthMain';
-
-
+import Post from './Components/Post/PostCreate';
+ 
 
 
 const App = () => {
   const [token, setToken] = useState<string | null>('');
 
-  
+
+
 
   useEffect(() => {
     if (localStorage.getItem('token')){
@@ -38,9 +39,10 @@ const App = () => {
      {!token ? (
            <AuthMain updateLocalStorage={updateLocalStorage}  />  
           ):(
-            <Main token={token} clearLocalStorage={clearLocalStorage}/>
+            
+            <Main token={token} clearLocalStorage={clearLocalStorage} />
           )}
-      <Footer />
+  
    </>
   
   )

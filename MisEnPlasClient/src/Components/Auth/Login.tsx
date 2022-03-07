@@ -49,7 +49,7 @@ class Login extends Component <LoginProps, LoginState> {
 
     render() {
         return (
-            <div className="auth-main p-4 ">
+            <div className="auth-main p-4 text-center">
                 <Form onSubmit={this.handleSubmit} className="auth-form p-5 flex">
                 <h1>Login</h1>
                     <FormGroup>

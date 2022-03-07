@@ -5,60 +5,52 @@ import {
     CardImg, 
     Container,
     Row,
-    Col
+    Col,
+    CardHeader
 } from 'reactstrap';
+import Footer from '../Footer/Footer';
+import PostDisplay from './PostCard/PostDisplay'
 import PostCreate from './PostCreate';
+import './Post.css'
 
 
-interface PostProps {
-    token: string,
+
+interface PostIndexProps {
+    token: string
+    //posts: object[]
     
     
 }
- 
+interface PostIndexState {
+}
 
 
-class Post extends Component <PostProps> {
+
+class PostIndex extends Component <PostIndexProps, PostIndexState> {
 
    
-    constructor(props: PostProps) {
+    constructor(props: PostIndexProps) {
         super(props);
-        
-    }
- 
-  
-     fetchPost = async () => {
-        try {
-        const res = await fetch(`http://localhost:2206/post/allposts`,{
-            method:"GET",
-            headers: new Headers({
-                "Content-Type":"application/json",
-                "Authorization": this.props.token
-            }),
-        })
-        const data = await res.json()
-       
-
-    } catch (error) {
-
-    }
+       this.state ={};
     } 
-        
 
-  
-   
     render() { 
         return ( 
             <>
-     
-     
-            <Container onLoad={this.fetchPost}>
-                <PostCreate token={this.props.token}/>
+        
+          <Container className='post-main' style={{float:'right'}}>
+              <Row>
+              <Col md='4'>
+             <PostCreate token={this.props.token}/>
+              </Col> 
+                  <Col md='8'>
+                     <PostDisplay token={this.props.token} /> 
+                  </Col>      
+              </Row>
           </Container>
-          
-          </>
+            </>
          );
     }
 }
  
-  export default Post;
+  export default PostIndex;

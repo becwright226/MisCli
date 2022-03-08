@@ -18,6 +18,7 @@ interface PostCreateProps {
 }
  
 interface PostCreateState {
+    //id?: string,
     date: string;
     title: string;
     content: string;
@@ -29,6 +30,7 @@ class Post extends React.Component<PostCreateProps, PostCreateState> {
     constructor(props: PostCreateProps) {
         super(props);
         this.state = { 
+            // id: '',
             date: '', 
             title: '',
             content: '',

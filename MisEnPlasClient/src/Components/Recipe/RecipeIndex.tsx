@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { Container } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
+import PostDisplay from '../Post/PostCard/PostDisplay';
 import RecipeCreate from './RecipeCreate';
+import RecipeDisplay from './RecipeDisplay';
 
 interface RecipeProps {
     token:string
@@ -19,7 +21,17 @@ class Recipe extends Component<RecipeProps, RecipeState> {
         
         return (  
         <Container>
-           <RecipeCreate token={this.props.token} /> 
+           <Row>
+              <Col md='4'>
+              <RecipeCreate token={this.props.token} /> 
+              </Col> 
+                  <Col md='8'>
+                     <RecipeDisplay token={this.props.token} /> 
+                  </Col>      
+              </Row>
+              <Col md='12'>
+                  
+              </Col>
         </Container>);
     }
 }

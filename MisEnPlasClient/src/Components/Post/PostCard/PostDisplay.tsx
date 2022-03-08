@@ -2,16 +2,12 @@ import React, { useState, useEffect, Component } from 'react';
 import { 
     Card, 
     CardBody, 
-    CardImg, 
     Container,
     Row,
     Col,
-    CardHeader,
-    CardText,
     CardTitle,
-    CardSubtitle,
-    CardGroup,
-    CardFooter
+    CardFooter,
+    Button
 } from 'reactstrap';
 import PostCreate from '../PostCreate'
 
@@ -25,7 +21,10 @@ interface PostDisplayProps {
 }
 
 interface PostDisplayState {
-    posts: object[]
+    posts: object[],
+    updatePressed: boolean,
+    postToUpdate: object
+   
 } 
 
 
@@ -34,7 +33,11 @@ class PostDisplay extends Component <PostDisplayProps, PostDisplayState> {
    
     constructor(props: PostDisplayProps) {
         super(props);
-      this.state ={posts: []};
+      this.state ={
+          posts: [],
+          updatePressed: false,
+          postToUpdate: {}
+        };
     }
 
     fetchPosts = async () => {
@@ -58,6 +61,8 @@ class PostDisplay extends Component <PostDisplayProps, PostDisplayState> {
     componentDidMount = () => {
         this.fetchPosts()
     }
+
+
  
     render() { 
         const postMapper = () => {
@@ -70,6 +75,7 @@ class PostDisplay extends Component <PostDisplayProps, PostDisplayState> {
                         <CardBody className='postcard-content text-center' style={{backgroundColor:' rgb(224, 231, 224)', color:'#453c49', fillOpacity:'100%'}}> {post.content}</CardBody>
                         <CardFooter className='postcard-footer text-center'>{post.role}-----{post.date}</CardFooter>
                       
+                        <p> <Button id={post.id} color="warning">Update</Button> </p>
                     </Card>
                 )
             })
@@ -83,6 +89,8 @@ class PostDisplay extends Component <PostDisplayProps, PostDisplayState> {
                    {postMapper()}  
                   </Col>
               </Row>
+              <Col md='12'>
+              </Col>
           </Container>
         { /* <PostCreate token={this.props.token} posts={this.props.posts} />*/}
             </>

@@ -12,6 +12,7 @@ import Footer from '../Footer/Footer';
 import PostDisplay from './PostCard/PostDisplay'
 import PostCreate from './PostCreate';
 import './Post.css'
+import PostEdit from './PostCard/PostEdit';
 
 
 
@@ -31,8 +32,11 @@ class PostIndex extends Component <PostIndexProps, PostIndexState> {
    
     constructor(props: PostIndexProps) {
         super(props);
-       this.state ={};
-    } 
+       this.state ={
+         
+       };
+    }
+     
 
     render() { 
         return ( 
@@ -47,6 +51,9 @@ class PostIndex extends Component <PostIndexProps, PostIndexState> {
                      <PostDisplay token={this.props.token} /> 
                   </Col>      
               </Row>
+              <Col md='12'>
+                  
+              </Col>
           </Container>
             </>
          );

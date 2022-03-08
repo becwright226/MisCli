@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Container } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
+import SchedDisplay from './ScheduleCard/SchedDisplay';
 import SchedCreate from './ScheduleCreate';
 
 
@@ -19,7 +20,17 @@ class SchedIndex extends React.Component<SchedIndexProps, SchedIndexState> {
     render() { 
         return ( 
         <Container>
-           <SchedCreate token={this.props.token}/>
+           <Row>
+              <Col md='4'>
+              <SchedCreate token={this.props.token}/>
+              </Col> 
+                  <Col md='8'>
+                     <SchedDisplay token={this.props.token} /> 
+                  </Col>      
+              </Row>
+              <Col md='12'>
+                  
+              </Col>
         </Container> );
     }
 }

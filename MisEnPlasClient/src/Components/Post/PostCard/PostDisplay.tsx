@@ -103,7 +103,7 @@ class PostDisplay extends Component <PostDisplayProps, PostDisplayState> {
                         <CardSubtitle className='postcard-sub ml-2'>{post.role}-----{post.date}</CardSubtitle>
                         <CardBody className='postcard-content text-center' style={{backgroundColor:' rgb(224, 231, 224)', color: 'black', fillOpacity:'100%'}}> {post.content}</CardBody>
                         <CardFooter className='postcard-footer text-center'><Row className='postcard-button'><Col><PostEdit post={post} token={this.props.token} fetchPosts={this.fetchPosts}/></Col>
-                       <Col><PostDelete /></Col></Row></CardFooter>
+                       <Col><PostDelete token={this.props.token} fetchPosts={this.fetchPosts} post={post} /></Col></Row></CardFooter>
                     </Card>
                 )
             })

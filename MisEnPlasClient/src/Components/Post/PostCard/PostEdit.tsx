@@ -74,7 +74,7 @@ class PostEdit extends React.Component<PostEditProps, PostEditState> {
         console.log(this.props.post)
         return ( 
             <div>
-                <button onClick={this.modal}>Im post edit</button>
+                <Button className='edit-btn m-2' style={{backgroundColor:'#b2d33a', float:'left',color: 'black'}} onClick={this.modal}>Update</Button>
              <Modal isOpen={this.state.model} >
                 <ModalHeader >Post Update</ModalHeader>
                 <ModalBody>

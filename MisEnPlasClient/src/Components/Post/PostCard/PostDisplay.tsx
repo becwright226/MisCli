@@ -7,9 +7,11 @@ import {
     Col,
     CardTitle,
     CardFooter,
-    Button
+    Button,
+    CardSubtitle
 } from 'reactstrap';
 import PostCreate from '../PostCreate'
+import PostDelete from './PostDelete';
 import PostEdit from './PostEdit';
 
 
@@ -97,13 +99,11 @@ class PostDisplay extends Component <PostDisplayProps, PostDisplayState> {
                     <Card className='postcard m-5' style={{backgroundColor:' rgb(41, 61, 41)', color:'#bbabc2', opacity:'90%', fontFamily:'Faustina'}} key={index}>
                     
                         {/* <th scope='row'>{post.id}</th> */}
-                        <CardTitle className='postcard-title m-3' scope='row' style={{fontSize:'15pt'}}>{post.title}</CardTitle>
-                        <CardBody className='postcard-content text-center' style={{backgroundColor:' rgb(224, 231, 224)', color:'#453c49', fillOpacity:'100%'}}> {post.content}</CardBody>
-                        <CardFooter className='postcard-footer text-center'>{post.role}-----{post.date}</CardFooter>
-                      
-                        {/* <p> <Button onClick={e => this.postUpdate(e, post)} id={post.id} color="warning">Update</Button> </p> */}
-                        <PostEdit post={post} token={this.props.token} fetchPosts={this.fetchPosts}/>
-                    
+                        <CardTitle className='postcard-title p-2' scope='row' style={{fontSize:'15pt'}}>{post.title}</CardTitle>
+                        <CardSubtitle className='postcard-sub ml-2'>{post.role}-----{post.date}</CardSubtitle>
+                        <CardBody className='postcard-content text-center' style={{backgroundColor:' rgb(224, 231, 224)', color: 'black', fillOpacity:'100%'}}> {post.content}</CardBody>
+                        <CardFooter className='postcard-footer text-center'><Row className='postcard-button'><Col><PostEdit post={post} token={this.props.token} fetchPosts={this.fetchPosts}/></Col>
+                       <Col><PostDelete /></Col></Row></CardFooter>
                     </Card>
                 )
             })
@@ -117,13 +117,6 @@ class PostDisplay extends Component <PostDisplayProps, PostDisplayState> {
                    {postMapper()}  
                   </Col>
               </Row>
-              <Col md='12'>
-              {/* {
-           
-            this.state.updatePressed ? <PostEdit updatePressed={this.state.updatePressed} update={this.postUpdate} postToUpdate={this.state.postToUpdate}  /> //2
-            : <div></div>
-          } */}
-              </Col>
           </Container>
        
             </>

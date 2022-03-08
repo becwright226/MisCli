@@ -64,7 +64,7 @@ class Post extends React.Component<PostCreateProps, PostCreateState> {
 
     render() { 
         return ( 
-            <div className='postform m-4 p-3' style={{backgroundColor:'rgb(41, 61, 41)', opacity: '85%'}}>
+            <div className='postform m-4 p-3' style={{backgroundColor:' rgb(41, 61, 41)', color:'#bbabc2', opacity:'90%', fontFamily:'Faustina', borderRadius: '4px'}}>
             <Form onSubmit={this.handleSubmit} >
             <FormGroup>
                         <Label for="date">Date</Label>
@@ -86,7 +86,7 @@ class Post extends React.Component<PostCreateProps, PostCreateState> {
                         <option > All Staff </option>
                         </Input>
                     </FormGroup>
-                    <Button type="submit" className="btn" > Submit </Button>
+                    <Button type="submit" className="btn" style={{backgroundColor:'#a7719e', color: 'black'}} > Submit </Button>
             </Form>
           
             </div>

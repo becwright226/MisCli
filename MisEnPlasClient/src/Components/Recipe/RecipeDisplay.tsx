@@ -26,6 +26,8 @@ interface RecipeDisplayProps {
 
 interface RecipeDisplayState {
     recipes: object[],
+    updatePressed: boolean,
+    recipeToUpdate: object
 } 
 
 
@@ -36,8 +38,8 @@ class RecipeDisplay extends Component <RecipeDisplayProps, RecipeDisplayState> {
         super(props);
       this.state ={
           recipes: [],
-        //   updatePressed: false,
-        //   postToUpdate: {}
+          updatePressed: false,
+          recipeToUpdate: {}
         };
     }
 
@@ -59,6 +61,15 @@ class RecipeDisplay extends Component <RecipeDisplayProps, RecipeDisplayState> {
         }
     }
 
+
+    setUpdatedRecipe = (e:any, recipe:any) => {
+        this.setState({
+            recipeToUpdate: recipe,
+            updatePressed: true
+    })
+    console.log(recipe)
+}
+
     componentDidMount = () => {
         this.fetchRecipes()
     }
@@ -77,15 +88,12 @@ class RecipeDisplay extends Component <RecipeDisplayProps, RecipeDisplayState> {
                         <CardBody className='recicard-content text-center' style={{backgroundColor:' rgb(224, 231, 224)', color:'#453c49', fillOpacity:'100%'}}> {recipe.desc}</CardBody>
                         <CardFooter className='recicard-footer text-center'><Row className='recicard-button'><Col><RecipeEdit recipe={recipe} token={this.props.token} fetchRecipes={this.fetchRecipes}/></Col>
                        <Col><RecipeDelete token={this.props.token} fetchRecipes={this.fetchRecipes} recipe={recipe} /></Col></Row></CardFooter>
-                      
-                        <p> <Button id={recipe.id} color="warning">Update</Button> </p>
                     </Card>
                 )
             })
         }
         return ( 
             <>
-        
           <Container>
               <Row>
                   <Col>

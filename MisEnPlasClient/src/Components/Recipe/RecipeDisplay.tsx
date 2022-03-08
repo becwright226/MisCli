@@ -8,8 +8,11 @@ import {
     CardTitle,
     CardFooter,
     Button,
-    CardSubtitle
+    CardSubtitle,
+    CardHeader
 } from 'reactstrap';
+import RecipeDelete from './RecipeDelete';
+import RecipeEdit from './RecipeEdit';
 import Recipe from './RecipeIndex';
 
 
@@ -23,9 +26,6 @@ interface RecipeDisplayProps {
 
 interface RecipeDisplayState {
     recipes: object[],
-    //updatePressed: boolean,
-   // postToUpdate: object
-   
 } 
 
 
@@ -70,11 +70,13 @@ class RecipeDisplay extends Component <RecipeDisplayProps, RecipeDisplayState> {
             return this.state.recipes.map((recipe: any, index: any) => {
                 return (
                     <Card className='recicard m-5' style={{backgroundColor:' rgb(41, 61, 41)', color:'#bbabc2', opacity:'90%', fontFamily:'Faustina'}} key={index}>
+                        <CardHeader className='recicard-footer text-center'>{recipe.course}-----{recipe.cuisine}</CardHeader>
                         <CardTitle className='recicard-title m-3' scope='row' style={{fontSize:'15pt'}}>{recipe.title}</CardTitle>
                         <CardSubtitle className='recicard-sub m-3' scope='row' style={{fontSize:'15pt'}}>{recipe.method}</CardSubtitle>
                         <CardSubtitle className='recicard-sub m-3' scope='row' style={{fontSize:'15pt'}}>{recipe.time}</CardSubtitle>
                         <CardBody className='recicard-content text-center' style={{backgroundColor:' rgb(224, 231, 224)', color:'#453c49', fillOpacity:'100%'}}> {recipe.desc}</CardBody>
-                        <CardFooter className='recicard-footer text-center'>{recipe.course}-----{recipe.cuisine}</CardFooter>
+                        <CardFooter className='recicard-footer text-center'><Row className='recicard-button'><Col><RecipeEdit recipe={recipe} token={this.props.token} fetchRecipes={this.fetchRecipes}/></Col>
+                       <Col><RecipeDelete token={this.props.token} fetchRecipes={this.fetchRecipes} recipe={recipe} /></Col></Row></CardFooter>
                       
                         <p> <Button id={recipe.id} color="warning">Update</Button> </p>
                     </Card>
@@ -90,8 +92,6 @@ class RecipeDisplay extends Component <RecipeDisplayProps, RecipeDisplayState> {
                    {recipeMapper()}  
                   </Col>
               </Row>
-              <Col md='12'>
-              </Col>
           </Container>
             </>
          );

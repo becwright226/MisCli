@@ -26,7 +26,7 @@ interface SchedDisplayProps {
 interface SchedDisplayState {
     schedules: object[],
     updatePressed: boolean,
-    postToUpdate: object
+    scheduleToUpdate: object
    
 } 
 
@@ -39,7 +39,7 @@ class SchedDisplay extends Component <SchedDisplayProps, SchedDisplayState> {
       this.state ={
           schedules: [],
           updatePressed: false,
-          postToUpdate: {}
+          scheduleToUpdate: {}
         };
     }
 
@@ -60,6 +60,15 @@ class SchedDisplay extends Component <SchedDisplayProps, SchedDisplayState> {
             console.log({error})
         }
     }
+
+
+    setUpdatedSchedule = (e:any, schedule:any) => {
+        this.setState({
+            scheduleToUpdate: schedule,
+            updatePressed: true
+    })
+    console.log(schedule)
+}
 
     componentDidMount = () => {
         this.fetchScheds()

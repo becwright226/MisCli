@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import { EventEmitter } from 'stream';
+
 
 interface PostEditProps {
    token: string

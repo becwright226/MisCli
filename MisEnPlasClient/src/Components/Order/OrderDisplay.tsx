@@ -11,6 +11,8 @@ import {
     CardSubtitle,
     Table
 } from 'reactstrap';
+import OrderDelete from './OrderDelete';
+import OrderEdit from './OrderEdit';
 
 
 
@@ -24,8 +26,8 @@ interface OrderDisplayProps {
 
 interface OrderDisplayState {
    orders: object[],
-    //updatePressed: boolean,
-   // diaryToUpdate: object
+   updatePressed: boolean,
+   orderToUpdate: object
    
 } 
 
@@ -37,8 +39,8 @@ class OrderDisplay extends Component <OrderDisplayProps, OrderDisplayState> {
         super(props);
       this.state ={
           orders: [],
-        //   updatePressed: false,
-        //   diaryToUpdate: {}
+          updatePressed: false,
+          orderToUpdate: {}
         };
     }
 
@@ -59,6 +61,14 @@ class OrderDisplay extends Component <OrderDisplayProps, OrderDisplayState> {
             console.log({error})
         }
     }
+
+    setUpdatedOrder = (e:any, order:any) => {
+        this.setState({
+            orderToUpdate: order,
+            updatePressed: true
+    })
+    console.log(order)
+}
 
     componentDidMount = () => {
         this.fetchOrders()
@@ -82,7 +92,8 @@ class OrderDisplay extends Component <OrderDisplayProps, OrderDisplayState> {
                                 {order.content}
                             </p>
                         </tbody>
-                        <p> <Button id={order.id} color="warning">Update</Button> </p>
+                        <tfoot><tr className='postcard-button'><col><OrderEdit order={order} token={this.props.token} fetchOrders={this.fetchOrders}/></col>
+                       <col><OrderDelete token={this.props.token} fetchOrders={this.fetchOrders} order={order} /></col></tr></tfoot>
                     </Table>
                 )
             })
@@ -95,8 +106,6 @@ class OrderDisplay extends Component <OrderDisplayProps, OrderDisplayState> {
                    {orderMapper()}  
                   </Col>
               </Row>
-              <Col md='12'>
-              </Col>
           </Container>
             </>
          );

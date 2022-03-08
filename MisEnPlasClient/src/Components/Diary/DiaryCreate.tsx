@@ -57,7 +57,7 @@ class DiaryCreate extends Component<DiaryCreateProps, DiaryCreateState> {
         <Form onSubmit={this.handleSubmit}>
             <FormGroup>
                         <Label for="date"> Date </Label>
-                        <Input id="li_date" type='date' name="date" placeholder="00/00/0000" onChange={(e:any) => this.setState({date: e.target.date})} value={this.state.date} />
+                        <Input id="li_date" type='date' name="date" placeholder="00/00/0000" onChange={(e:any) => this.setState({date: e.target.value})} value={this.state.date} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="title"> Entry Title </Label>

@@ -104,7 +104,7 @@ class RecipeEdit extends React.Component<RecipeEditProps, RecipeEditState> {
                         </FormGroup>
                         <FormGroup>
                         <Label for="method">Method</Label>
-                        <Input id="li_method" type='text' name="role"  onChange={(e:any) => this.setState({desc: e.target.value})} defaultValue={this.props.recipe.desc}/> 
+                        <Input id="li_method" type='text' name="role"  onChange={(e:any) => this.setState({desc: e.target.value})} defaultValue={this.props.recipe.method}/> 
                         </FormGroup>
                         <Button type="submit" color="primary"> Submit </Button>
                     </Form>

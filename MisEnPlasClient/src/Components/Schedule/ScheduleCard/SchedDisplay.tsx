@@ -11,6 +11,8 @@ import {
     CardText,
     CardSubtitle
 } from 'reactstrap';
+import ScheduleDelete from './ScheduleDelete';
+import ScheduleEdit from './ScheduleEdit';
 
 
 
@@ -76,9 +78,8 @@ class SchedDisplay extends Component <SchedDisplayProps, SchedDisplayState> {
                         <CardSubtitle className='schedcard-sub m-3' scope='row' style={{fontSize:'15pt'}}>{schedule.date}</CardSubtitle>
                         <CardBody className='schedcard-desc text-center' style={{backgroundColor:' rgb(224, 231, 224)', color:'#453c49', fillOpacity:'100%'}}> {schedule.desc}</CardBody>
                         <CardText className='schedcard-text text-center' style={{backgroundColor:' rgb(224, 231, 224)', color:'#453c49', fillOpacity:'100%'}}>{schedule.empAssign}</CardText>
-
-                      
-                        <p> <Button id={schedule.id} color="warning">Update</Button> </p>
+                        <CardFooter className='schedcard-footer text-center'><Row className='schedcard-button'><Col><ScheduleEdit schedule={schedule} token={this.props.token} fetchScheds={this.fetchScheds}/></Col>
+                       <Col><ScheduleDelete token={this.props.token} fetchScheds={this.fetchScheds} schedule={schedule}/></Col></Row></CardFooter>
                     </Card>
                 )
             })

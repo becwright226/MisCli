@@ -16,7 +16,7 @@ import Recipe from './RecipeIndex';
 
 interface RecipeDisplayProps {
     token: string
-
+  
     
     
 }

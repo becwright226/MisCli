@@ -10,6 +10,7 @@ import {
     Button
 } from 'reactstrap';
 import PostCreate from '../PostCreate'
+import PostEdit from './PostEdit';
 
 
 
@@ -23,7 +24,7 @@ interface PostDisplayProps {
 interface PostDisplayState {
     posts: object[],
     updatePressed: boolean,
-    postToUpdate: object
+   postToUpdate: object
    
 } 
 
@@ -35,8 +36,8 @@ class PostDisplay extends Component <PostDisplayProps, PostDisplayState> {
         super(props);
       this.state ={
           posts: [],
-          updatePressed: false,
-          postToUpdate: {}
+         updatePressed: false,
+         postToUpdate: {}
         };
     }
 
@@ -58,6 +59,31 @@ class PostDisplay extends Component <PostDisplayProps, PostDisplayState> {
         }
     }
 
+    // postUpdate = (e:any, post:any) => {
+    //     console.log(post.id)
+    //     console.log(post)
+    //     fetch(`http://localhost:2206/post/${post.id}`, {
+    //       method: 'PUT',
+    //       body: JSON.stringify({ post: post}),
+    //       headers: new Headers({
+    //         'Content-Type': 'application/json',
+    //         'Authorization': this.props.token
+    //       })
+    //     })
+    //     .then((res) => {
+    //       this.setState({ updatePressed: false })
+    //       this.fetchPosts();
+    //     })
+    //   }
+
+    setUpdatedPost = (e:any, post:any) => {
+        this.setState({
+            postToUpdate: post,
+            updatePressed: true
+    })
+    console.log(post)
+}
+
     componentDidMount = () => {
         this.fetchPosts()
     }
@@ -75,7 +101,9 @@ class PostDisplay extends Component <PostDisplayProps, PostDisplayState> {
                         <CardBody className='postcard-content text-center' style={{backgroundColor:' rgb(224, 231, 224)', color:'#453c49', fillOpacity:'100%'}}> {post.content}</CardBody>
                         <CardFooter className='postcard-footer text-center'>{post.role}-----{post.date}</CardFooter>
                       
-                        <p> <Button id={post.id} color="warning">Update</Button> </p>
+                        {/* <p> <Button onClick={e => this.postUpdate(e, post)} id={post.id} color="warning">Update</Button> </p> */}
+                        <PostEdit post={post} token={this.props.token} fetchPosts={this.fetchPosts}/>
+                    
                     </Card>
                 )
             })
@@ -90,9 +118,14 @@ class PostDisplay extends Component <PostDisplayProps, PostDisplayState> {
                   </Col>
               </Row>
               <Col md='12'>
+              {/* {
+           
+            this.state.updatePressed ? <PostEdit updatePressed={this.state.updatePressed} update={this.postUpdate} postToUpdate={this.state.postToUpdate}  /> //2
+            : <div></div>
+          } */}
               </Col>
           </Container>
-        { /* <PostCreate token={this.props.token} posts={this.props.posts} />*/}
+       
             </>
          );
     }

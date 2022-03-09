@@ -69,7 +69,7 @@ class RecipeCreate extends React.Component<RecipeCreateProps, RecipeCreateState>
         return (  
             <>
       
-        <Form onSubmit={this.handleSubmit} className='recipe-create'>
+        <Form onSubmit={this.handleSubmit} className='recipeForm m-4 p-3' style={{backgroundColor:' rgb(41, 61, 41)', color:'#bbabc2', opacity:'90%', fontFamily:'Faustina', borderRadius: '4px'}}>
 
                     <FormGroup>
                         <Label for="cuisine"> Cuisine </Label>
@@ -101,7 +101,7 @@ class RecipeCreate extends React.Component<RecipeCreateProps, RecipeCreateState>
                         <Label for="method"> Method </Label>
                         <Input id="li_method" type='text' name='method' placeholder="ex. Bain Marie" onChange={(e:any) => this.setState({method: e.target.value})} value={this.state.method}/>
                     </FormGroup>
-                    <Button type="submit" className="btn" > Submit </Button>
+                    <Button type="submit" className="btn" style={{backgroundColor:'#a7719e', color: 'black'}} > Submit </Button>
             </Form>
        
         </>

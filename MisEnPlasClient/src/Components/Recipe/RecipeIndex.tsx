@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'reactstrap';
 import PostDisplay from '../Post/PostCard/PostDisplay';
 import RecipeCreate from './RecipeCreate';
 import RecipeDisplay from './RecipeDisplay';
+import './Recipe.css'
 
 interface RecipeProps {
     token:string
@@ -20,7 +21,7 @@ class Recipe extends Component<RecipeProps, RecipeState> {
     render() { 
         
         return (  
-        <Container>
+        <Container className='recipe-main' style={{float:'right'}}>
            <Row>
               <Col md='4'>
               <RecipeCreate token={this.props.token} /> 

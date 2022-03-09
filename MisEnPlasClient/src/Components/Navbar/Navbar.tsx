@@ -43,6 +43,9 @@ class SiteBar extends React.Component<SiteBarProps, SiteBarState> {
                 <NavLink> <Button onClick={this.props.clearLocalStorage}> Logout </Button></NavLink>
                 </NavItem>
             </Nav>
+
+    
+          
         </Navbar>
     );
 }

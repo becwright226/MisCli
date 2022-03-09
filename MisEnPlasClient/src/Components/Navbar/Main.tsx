@@ -29,11 +29,11 @@ class Main extends Component<MainProps> {
           
                 <Nav clearLocalStorage={this.props.clearLocalStorage}/>
                 <Routes>
-                     <Route path="/" element={ <Post token={this.props.token} /> } />
-                   <Route path="/order" element={ <Order token={this.props.token}/> } />
-                    <Route path="/recipe" element={ <Recipe token={this.props.token} /> } />
-                    <Route  path="/diary" element={ <Diary token={this.props.token}/> } />
-                    <Route  path="/schedule" element={ <Sched token={this.props.token} /> } />
+                    <Route path="/" element={ <Post clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} /> } />
+                   <Route path="/order" element={ <Order clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> } />
+                    <Route path="/recipe" element={ <Recipe clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} /> } />
+                    <Route  path="/diary" element={ <Diary clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> } />
+                    <Route  path="/schedule" element={ <Sched clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} /> } />
                   
                 </Routes> 
           

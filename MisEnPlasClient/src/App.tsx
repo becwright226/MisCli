@@ -11,6 +11,11 @@ import { request } from "http";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Components/Auth/Login";
 import Signup from "./Components/Auth/Signup";
+import OrderDelete from "./Components/Order/OrderDelete";
+import OrderIndex from "./Components/Order/OrderIndex";
+import Recipe from "./Components/Recipe/RecipeIndex";
+import Diary from "./Components/Diary/DiaryIndex";
+import Sched from "./Components/Schedule/SchedIndex";
 
 const App = () => {
   const [token, setToken] = useState<string | null>("");
@@ -72,6 +77,31 @@ const App = () => {
           <Route
         path="/main"
         element={ token? <Main clearLocalStorage={clearLocalStorage} token={token as string}  /> : <Navigate to='/login'replace/>
+          
+        }
+      />
+      <Route
+        path="/order"
+        element={ token? 
+         <OrderIndex clearLocalStorage={clearLocalStorage}  token={token as string}  /> : <Navigate to='/main'replace/>
+          
+        }
+      />
+       <Route
+        path="/recipe"
+        element={ token? <Recipe clearLocalStorage={clearLocalStorage} token={token as string}  /> : <Navigate to='/main'replace/>
+          
+        }
+      />
+       <Route
+        path="/diary"
+        element={ token? <Diary clearLocalStorage={clearLocalStorage} token={token as string}  /> : <Navigate to='/main'replace/>
+          
+        }
+      />
+        <Route
+        path="/schedule"
+        element={ token? <Sched clearLocalStorage={clearLocalStorage} token={token as string}  /> : <Navigate to='/main'replace/>
           
         }
       />

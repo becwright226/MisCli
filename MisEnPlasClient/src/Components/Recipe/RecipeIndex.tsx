@@ -4,9 +4,12 @@ import PostDisplay from '../Post/PostCard/PostDisplay';
 import RecipeCreate from './RecipeCreate';
 import RecipeDisplay from './RecipeDisplay';
 import './Recipe.css'
+import Main from '../Navbar/Main';
+import SiteBar from '../Navbar/Navbar';
 
 interface RecipeProps {
     token:string
+    clearLocalStorage: () => void
 
 }
  
@@ -29,6 +32,8 @@ class Recipe extends Component<RecipeProps, RecipeState> {
     render() { 
         
         return (  
+            <>
+            <SiteBar clearLocalStorage={this.props.clearLocalStorage}  />
         <Container className='recipe-main' style={{float:'right'}}>
            <Row>
               <Col md='4'>
@@ -41,7 +46,9 @@ class Recipe extends Component<RecipeProps, RecipeState> {
               <Col md='12'>
                   
               </Col>
-        </Container>);
+        </Container>
+            </>
+            );
     }
 }
  

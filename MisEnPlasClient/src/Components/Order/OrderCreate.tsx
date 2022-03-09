@@ -4,6 +4,7 @@ import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 interface OrderCreateProps {
    token: string 
+   triggerMethod: Function
 }
  
 interface OrderCreateState {
@@ -34,8 +35,8 @@ class OrderCreate extends Component<OrderCreateProps, OrderCreateState> {
             date: this.state.date,
             itemCount: this.state.itemCount,
             desc: this.state.desc,
-            isEvent: this.state.isEvent,
-            eventName: Boolean(this.state.eventName),
+            isEvent: Boolean(this.state.isEvent),
+            eventName: this.state.eventName,
             cost: this.state.cost
         }
         try {
@@ -48,17 +49,20 @@ class OrderCreate extends Component<OrderCreateProps, OrderCreateState> {
                 })
             })
             const data = await res.json()
+            console.log(data)
 
-            this.setState({
-                date: '',
-            itemCount: 0,
-            desc: '',
-            isEvent: "false",
-            eventName: '',
-            cost: 0   
-            })
+            this.props.triggerMethod()
+
+            // this.setState({
+            //     date: '',
+            // itemCount: 0,
+            // desc: '',
+            // isEvent: "false",
+            // eventName: '',
+            // cost: 0   
+            // })
         } catch (error) {
-            console.log(error)
+            console.log({error})
         }
     }
     render() { 
@@ -78,10 +82,10 @@ class OrderCreate extends Component<OrderCreateProps, OrderCreateState> {
                         <Input id="li_desc" type='textarea' name="description" placeholder="ex. 3 cases bacon, 18 dz eggs, 10qt juice" onChange={(e:any) => this.setState({desc: e.target.value})} value={this.state.desc} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="role">Is there an event this week?</Label>
-                        <Input id="li_role" type='select' name="role"  onChange={(e:any) => this.setState({isEvent: e.target.value})} value={this.state.isEvent}> 
+                        <Label for="isEvent">Is there an event this week?</Label>
+                        <Input id="li_isEvent" type='select' name="isEvent"  onChange={(e:any) => this.setState({isEvent: e.target.value})} value={this.state.isEvent}> 
                         <option value='true'> Yes </option>
-                        <option value='false'> No </option>
+                        <option value='false' > No </option>
                         </Input>
                     </FormGroup>
                     <FormGroup>

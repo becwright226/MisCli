@@ -61,6 +61,15 @@ class RecipeCreate extends React.Component<RecipeCreateProps, RecipeCreateState>
            const data = await res.json()
            console.log(data)
           this.props.triggerMethod()
+
+          this.setState({
+            cuisine: '',
+            title: '',
+            course: '',
+            desc: '',
+            time: 0,
+            method: ''  
+            })
        } catch (error) {
            console.log({error})
        }

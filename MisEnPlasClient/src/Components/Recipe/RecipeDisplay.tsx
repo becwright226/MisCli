@@ -92,7 +92,7 @@ componentDidUpdate(prevProps: RecipeDisplayProps, prevState: RecipeDisplayState)
                         <CardSubtitle className='recicard-sub m-3' scope='row' style={{fontSize:'15pt'}}>{recipe.time}</CardSubtitle>
                         <CardBody className='recicard-content text-center' style={{backgroundColor:' rgb(224, 231, 224)', color:'#453c49', fillOpacity:'100%'}}> {recipe.desc}</CardBody>
                         <CardFooter className='recicard-footer text-center'><Row className='recicard-button'><Col><RecipeEdit recipe={recipe} token={this.props.token} fetchRecipes={this.fetchRecipes}/></Col>
-                       <Col><RecipeDelete token={this.props.token} fetchRecipes={this.fetchRecipes} recipe={recipe} /></Col></Row></CardFooter>
+                       <Col><RecipeDelete token={this.props.token} fetchRecipes={this.fetchRecipes} recipe={recipe} /></Col> </Row></CardFooter>
                     </Card>
                 )
             })

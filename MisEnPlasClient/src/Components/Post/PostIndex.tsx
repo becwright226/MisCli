@@ -18,7 +18,7 @@ import PostEdit from './PostCard/PostEdit';
 
 interface PostIndexProps {
     token: string
-    //posts: object[]
+    clearLocalStorage: () => void
     
     
 }
@@ -51,9 +51,6 @@ class PostIndex extends Component <PostIndexProps, PostIndexState> {
                      <PostDisplay token={this.props.token} /> 
                   </Col>      
               </Row>
-              <Col md='12'>
-                  
-              </Col>
           </Container>
             </>
          );

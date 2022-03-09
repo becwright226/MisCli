@@ -61,7 +61,7 @@ class SchedCreate extends Component<SchedCreateProps, SchedCreateState> {
     render() { 
         return ( 
             <>
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit} className='scheduleForm m-4 p-3' style={{backgroundColor:' rgb(41, 61, 41)', color:'#bbabc2', opacity:'90%', fontFamily:'Faustina', borderRadius: '4px'}}>
             <FormGroup>
                         <Label for="date">Date</Label>
                         <Input id="li_date" type="date" name="date" placeholder="enter the date" onChange={(e:any) => this.setState({date: e.target.value})} value={this.state.date} />
@@ -82,7 +82,7 @@ class SchedCreate extends Component<SchedCreateProps, SchedCreateState> {
                         <option > All Staff </option>
                         </Input>
                     </FormGroup>
-                    <Button type="submit" className="btn" > Submit </Button>
+                    <Button type="submit" className="btn" style={{backgroundColor:'#a7719e', color: 'black'}}> Submit </Button>
             </Form>
           
             </>

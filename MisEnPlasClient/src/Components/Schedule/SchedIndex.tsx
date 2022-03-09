@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Col, Container, Row } from 'reactstrap';
 import SchedDisplay from './ScheduleCard/SchedDisplay';
 import SchedCreate from './ScheduleCreate';
+import './Schedule.css'
 
 
 interface SchedIndexProps {
@@ -19,7 +20,7 @@ class SchedIndex extends React.Component<SchedIndexProps, SchedIndexState> {
     }
     render() { 
         return ( 
-        <Container>
+        <Container className='schedule-main' style={{float:'right'}}>
            <Row>
               <Col md='4'>
               <SchedCreate token={this.props.token}/>

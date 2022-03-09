@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Col, Container, Row } from 'reactstrap';
 import DiaryCreate from './DiaryCreate';
 import DiaryDisplay from './DiaryDisplay';
+import './Diary.css'
 
 interface DiaryProps {
     token:string
@@ -18,7 +19,7 @@ class Diary extends Component<DiaryProps, DiaryState> {
     }
     render() { 
         return ( 
-            <Container>
+            <Container className='diary-main' style={{float:'right'}}>
                 <Row>
               <Col md='4'>
               <DiaryCreate token={this.props.token} />

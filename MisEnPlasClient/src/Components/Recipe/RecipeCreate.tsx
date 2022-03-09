@@ -73,7 +73,7 @@ class RecipeCreate extends React.Component<RecipeCreateProps, RecipeCreateState>
 
                     <FormGroup>
                         <Label for="cuisine"> Cuisine </Label>
-                        <Input id="li_style" type="text" name="cuisine" placeholder="ex. French" onChange={(e:any) => this.setState({cuisine: e.target.cuisine})} value={this.state.cuisine} />
+                        <Input id="li_style" type="text" name="cuisine" placeholder="ex. French" onChange={(e:any) => this.setState({cuisine: e.target.value})} value={this.state.cuisine} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="title"> Recipe Name </Label>

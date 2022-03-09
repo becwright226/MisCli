@@ -54,7 +54,7 @@ class DiaryCreate extends Component<DiaryCreateProps, DiaryCreateState> {
         return (  
             <>
        
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit} className='postform m-4 p-3' style={{backgroundColor:' rgb(41, 61, 41)', color:'#bbabc2', opacity:'90%', fontFamily:'Faustina', borderRadius: '4px'}}>
             <FormGroup>
                         <Label for="date"> Date </Label>
                         <Input id="li_date" type='date' name="date" placeholder="00/00/0000" onChange={(e:any) => this.setState({date: e.target.value})} value={this.state.date} />
@@ -67,7 +67,7 @@ class DiaryCreate extends Component<DiaryCreateProps, DiaryCreateState> {
                         <Label for="content"> Content </Label>
                         <Input id="li_content" type='textarea' name="content" placeholder="Write about your day, these thoughts are only for your eyes" onChange={(e:any) => this.setState({content: e.target.value})} value={this.state.content}/>
                     </FormGroup>
-                    <Button type="submit" className="btn" > Submit </Button>
+                    <Button type="submit" className="btn" style={{backgroundColor:'#a7719e', color: 'black'}} > Submit </Button>
             </Form>
       
         </>

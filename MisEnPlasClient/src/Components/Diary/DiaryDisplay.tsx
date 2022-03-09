@@ -84,7 +84,7 @@ class DiaryDisplay extends Component <DiaryDisplayProps, DiaryDisplayState> {
     
                         <CardTitle className='diarycard-title m-3' scope='row' style={{fontSize:'15pt'}}>{diary.title}</CardTitle>
                         <CardSubtitle className='diarycard-sub text-center'>{diary.date}</CardSubtitle>
-                        <CardBody className='diarycard-content text-center' style={{backgroundColor:' rgb(224, 231, 224)', color:'#453c49', fillOpacity:'100%'}}> {diary.content}</CardBody>
+                        <CardBody className='diarycard-content text-center' style={{backgroundColor:' rgb(224, 231, 224)', color: 'black', fillOpacity:'100%'}}> {diary.content}</CardBody>
                         <CardFooter className='diarycard-footer text-center'><Row className='diarycard-button'><Col><DiaryEdit diary={diary} token={this.props.token} fetchDiaries={this.fetchDiaries}/></Col>
                        <Col><DiaryDelete token={this.props.token} fetchDiaries={this.fetchDiaries} diary={diary} /></Col></Row></CardFooter>
                     </Card>

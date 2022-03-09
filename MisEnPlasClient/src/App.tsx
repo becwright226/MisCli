@@ -6,12 +6,14 @@ import Main from './Components/Navbar/Main';
 import Footer from './Components/Footer/Footer';
 import AuthMain from './Components/Auth/Navbar/AuthMain';
 import Post from './Components/Post/PostCreate';
+import { userInfo } from 'os';
+import { request } from 'http';
  
 
 
 const App = () => {
   const [token, setToken] = useState<string | null>('');
-
+  const [role, setRole] = useState<string | null>('');
 
 
 
@@ -21,6 +23,31 @@ const App = () => {
     }
   }, []);
   
+  // useEffect(() => {
+  //   if (req.user.role==='admin') => {
+  //     (localStorage.getItem('role')) {
+  //       setRole(localStorage.getItem("role"))}
+  //   }
+  // }, []);
+
+  const adminRoute = (newRole: 'admin') => {
+    localStorage.setItem('role', newRole);
+    setRole(newRole)
+
+  }
+
+  const bohRoute = (newRole: 'boh') => {
+    localStorage.setItem('role', newRole);
+    setRole(newRole)
+
+  }
+
+  const fohRoute = (newRole: 'foh') => {
+    localStorage.setItem('role', newRole);
+    setRole(newRole)
+
+  }
+
   const updateLocalStorage = (newToken: string) => {
     localStorage.setItem('token', newToken);
     setToken(newToken)
@@ -40,7 +67,7 @@ const App = () => {
            <AuthMain updateLocalStorage={updateLocalStorage}  />  
           ):(
             
-            <Main token={token} clearLocalStorage={clearLocalStorage} />
+            <Main token={token}  clearLocalStorage={clearLocalStorage} />
           )}
   
    </>

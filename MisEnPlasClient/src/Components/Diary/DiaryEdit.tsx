@@ -57,8 +57,13 @@ class DiaryEdit extends React.Component<DiaryEditProps, DiaryEditState> {
         })
         .then((res) => {
           this.setState({ model: false })
-          this.props.fetchDiaries();
+         // this.props.fetchDiaries();
         })
+        
+      }
+
+      componentDidUpdate = () => {
+        this.props.fetchDiaries();//like this?
       }
 
     modal = () => {

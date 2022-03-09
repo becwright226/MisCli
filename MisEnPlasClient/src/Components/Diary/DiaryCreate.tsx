@@ -54,7 +54,7 @@ class DiaryCreate extends Component<DiaryCreateProps, DiaryCreateState> {
         return (  
             <>
        
-        <Form onSubmit={this.handleSubmit} className='postform m-4 p-3' style={{backgroundColor:' rgb(41, 61, 41)', color:'#bbabc2', opacity:'90%', fontFamily:'Faustina', borderRadius: '4px'}}>
+        <Form onSubmit={this.handleSubmit} className='diaryform m-4 p-3' style={{backgroundColor:' rgb(41, 61, 41)', color:'#bbabc2', opacity:'90%', fontFamily:'Faustina', borderRadius: '4px'}}>
             <FormGroup>
                         <Label for="date"> Date </Label>
                         <Input id="li_date" type='date' name="date" placeholder="00/00/0000" onChange={(e:any) => this.setState({date: e.target.value})} value={this.state.date} />

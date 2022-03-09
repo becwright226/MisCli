@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Col, Container, Row } from 'reactstrap';
 import OrderCreate from './OrderCreate';
 import OrderDisplay from './OrderDisplay';
+import './Order.css'
 
 interface OrderIndexProps {
     token: string
@@ -18,7 +19,7 @@ class OrderIndex extends React.Component<OrderIndexProps> {
     }
     render() { 
         return ( 
-            <Container>
+            <Container className='order-main' style={{float:'right'}}>
                 <Row>
               <Col md='4'>
               <OrderCreate token={this.props.token}/>

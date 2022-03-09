@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './Auth.css'
+import AuthMain from "./Navbar/AuthMain";
 
 interface SignupProps {
     updateLocalStorage: (newToken: string, newRole: string) => void
@@ -65,6 +66,8 @@ class Signup extends Component <SignupProps, SignupState> {
 
     render() {
         return (
+            <>
+            <AuthMain updateLocalStorage={this.props.updateLocalStorage} />
             <div className="auth-main p-4">
                 <Form onSubmit={this.handleSubmit} className="auth-form p-5" >
                 <h1>Signup</h1>
@@ -97,6 +100,7 @@ class Signup extends Component <SignupProps, SignupState> {
                     <p><a href="/login">Already a user? Sign-in</a></p>
                 </Form>
             </div>
+            </>
         )
     }
 }

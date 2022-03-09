@@ -9,7 +9,7 @@ import AuthMain from './Navbar/AuthMain';
 
 interface AuthProps {
     updateLocalStorage: (newToken: string, newRole: string) => void
-  token: string |null
+  
 }
  
 interface AuthState {
@@ -36,7 +36,7 @@ class Auth extends React.Component<AuthProps, AuthState> {
             {/*<AuthMain updateLocalStorage={this.props.updateLocalStorage}/>*/}
       
            {!isLogin ? (
-              <Login token={this.props.token} updateLocalStorage={this.props.updateLocalStorage}/>
+              <Login updateLocalStorage={this.props.updateLocalStorage}/>
            ):(
             <Signup updateLocalStorage={this.props.updateLocalStorage} />
            )

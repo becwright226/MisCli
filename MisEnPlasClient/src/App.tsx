@@ -10,6 +10,7 @@ import { userInfo } from "os";
 import { request } from "http";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Components/Auth/Login";
+import Signup from "./Components/Auth/Signup";
 
 const App = () => {
   const [token, setToken] = useState<string | null>("");
@@ -45,7 +46,7 @@ const App = () => {
         path="/"
         element={
           !token ? (
-            <AuthMain updateLocalStorage={updateLocalStorage} token={token} />
+            <Auth updateLocalStorage={updateLocalStorage} />
           ) : (
             <Navigate to="/main" replace/> 
           )
@@ -54,16 +55,15 @@ const App = () => {
       <Route
         path="/signup"
         element={<>
-        <AuthMain updateLocalStorage={updateLocalStorage} token={token} />
-        <Auth token={token} updateLocalStorage={updateLocalStorage} />
+        <AuthMain updateLocalStorage={updateLocalStorage}  />
+        <Signup updateLocalStorage={updateLocalStorage} />
         </>}
       />
       <Route
         path="/login"
         element={
           <> {!token ? <>
-            <AuthMain updateLocalStorage={updateLocalStorage} token={token} />
-            <Login updateLocalStorage={updateLocalStorage} token={token} /> </>
+            <Login updateLocalStorage={updateLocalStorage} /> </>
     : <Navigate to="/main" replace/>      
           }
           </>

@@ -2,11 +2,12 @@ import React, { Component, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './Auth.css'
+import AuthMain from "./Navbar/AuthMain";
 import NavigationHelper from "./NavigateHelper";
 
 interface LoginProps {
     updateLocalStorage: (newToken: string, newRole: string) => void
-    token: string|null
+  
 }
  
 interface LoginState {
@@ -55,6 +56,7 @@ class Login extends Component <LoginProps, LoginState> {
         return (
             <>
             <NavigationHelper path={this.state.path}></NavigationHelper>
+            <AuthMain updateLocalStorage={this.props.updateLocalStorage} />
             <div className="auth-main p-4 text-center">
                 <Form onSubmit={this.handleSubmit} className="auth-form p-5 flex">
                 <h1>Login</h1>

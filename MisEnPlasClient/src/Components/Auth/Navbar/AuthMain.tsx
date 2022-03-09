@@ -9,7 +9,7 @@ import '../Auth.css'
 
 interface AuthMainProps {
 updateLocalStorage: (newToken: string, newRole: string) => void
-token: string| null
+
 }
  
 
@@ -25,7 +25,7 @@ class AuthMain extends Component<AuthMainProps> {
         <React.Fragment>
            
               <Nav updateLocalStorage={this.props.updateLocalStorage} />
-     
+               
                
                
            

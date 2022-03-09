@@ -23,6 +23,7 @@ interface PostIndexProps {
     
 }
 interface PostIndexState {
+    trigger: boolean 
 }
 
 
@@ -33,22 +34,24 @@ class PostIndex extends Component <PostIndexProps, PostIndexState> {
     constructor(props: PostIndexProps) {
         super(props);
        this.state ={
-         
+        trigger: false 
        };
     }
      
+    triggerMethod = () => {
+        this.setState({trigger:!this.state.trigger})
+    }
 
     render() { 
         return ( 
             <>
-        
           <Container className='post-main' style={{float:'right'}}>
               <Row>
               <Col md='4'>
-             <PostCreate token={this.props.token}/>
+             <PostCreate triggerMethod={this.triggerMethod} token={this.props.token}/>
               </Col> 
                   <Col md='8'>
-                     <PostDisplay token={this.props.token} /> 
+                     <PostDisplay trigger={this.state.trigger} token={this.props.token} /> 
                   </Col>      
               </Row>
           </Container>

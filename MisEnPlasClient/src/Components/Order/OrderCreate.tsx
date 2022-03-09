@@ -53,14 +53,14 @@ class OrderCreate extends Component<OrderCreateProps, OrderCreateState> {
 
             this.props.triggerMethod()
 
-            // this.setState({
-            //     date: '',
-            // itemCount: 0,
-            // desc: '',
-            // isEvent: "false",
-            // eventName: '',
-            // cost: 0   
-            // })
+            this.setState({
+                date: '',
+            itemCount: 0,
+            desc: '',
+            isEvent: "false",
+            eventName: '',
+            cost: 0   
+            })
         } catch (error) {
             console.log({error})
         }

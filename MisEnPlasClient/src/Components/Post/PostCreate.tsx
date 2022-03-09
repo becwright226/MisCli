@@ -15,6 +15,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 interface PostCreateProps {
     token: string
+    triggerMethod: Function
 }
  
 interface PostCreateState {
@@ -56,6 +57,13 @@ class Post extends React.Component<PostCreateProps, PostCreateState> {
               })
             })
             const data = await res.json()
+            this.props.triggerMethod()
+            this.setState({
+                date: '', 
+                title: '',
+                content: '',
+                role: 'All Staff'
+            })
            
         } catch (error) {
             console.log({error})

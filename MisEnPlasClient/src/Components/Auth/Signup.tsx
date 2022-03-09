@@ -3,7 +3,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './Auth.css'
 
 interface SignupProps {
-    updateLocalStorage: (newToken: string) => void
+    updateLocalStorage: (newToken: string, newRole: string) => void
 }
  
 interface SignupState {
@@ -47,7 +47,7 @@ class Signup extends Component <SignupProps, SignupState> {
               })
         })
         const data =await res.json()
-        this.props.updateLocalStorage(data.token)
+        this.props.updateLocalStorage(data.token, data.user.role)
     
            this.setState({
               firstName:'',

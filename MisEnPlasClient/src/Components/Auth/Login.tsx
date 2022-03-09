@@ -1,15 +1,19 @@
 import React, { Component, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './Auth.css'
+import NavigationHelper from "./NavigateHelper";
 
 interface LoginProps {
-    updateLocalStorage: (newToken: string) => void
+    updateLocalStorage: (newToken: string, newRole: string) => void
+    token: string|null
 }
  
 interface LoginState {
     email: string,
     password: string,
     role: string
+    path: string
 }
 
 class Login extends Component <LoginProps, LoginState> {
@@ -19,7 +23,8 @@ class Login extends Component <LoginProps, LoginState> {
         this.state = {
             email: '',
             password: '',
-            role: ''
+            role: '',
+            path: ""
         };
     }
 
@@ -39,8 +44,7 @@ class Login extends Component <LoginProps, LoginState> {
         }).then(
             (response) => response.json()
         ).then((data) => {
-            console.log(data)
-           
+            this.props.updateLocalStorage(data.token, data.user.role)
             
         }) 
       
@@ -49,6 +53,8 @@ class Login extends Component <LoginProps, LoginState> {
 
     render() {
         return (
+            <>
+            <NavigationHelper path={this.state.path}></NavigationHelper>
             <div className="auth-main p-4 text-center">
                 <Form onSubmit={this.handleSubmit} className="auth-form p-5 flex">
                 <h1>Login</h1>
@@ -72,7 +78,7 @@ class Login extends Component <LoginProps, LoginState> {
                     <br/>
                     <p><a href="/">New user? Sign-up</a></p>
                 </Form>
-            </div>
+            </div></>
         )
     }
 }

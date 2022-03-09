@@ -1,8 +1,10 @@
 import React from 'react';
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import './Main.css'
+
 interface SiteBarProps {
-    clearLocalStorage: (token: string) => void
+    clearLocalStorage: () => void
 }
 interface SiteBarState {
     token:string
@@ -20,7 +22,7 @@ class SiteBar extends React.Component<SiteBarProps, SiteBarState> {
     render() { 
 
     return (
-        <Navbar color="dark" dark expand="lg">
+        <Navbar dark expand="lg" className='main-nav'>
             <NavbarBrand href="/">
                 Home
             </NavbarBrand>
@@ -38,7 +40,7 @@ class SiteBar extends React.Component<SiteBarProps, SiteBarState> {
                     <NavLink><Link to="/schedule" className="site-link"> Schedules </Link></NavLink>
                 </NavItem>   
                 <NavItem>
-                <NavLink> <Button token={this.props.clearLocalStorage}> Logout </Button></NavLink>
+                <NavLink> <Button onClick={this.props.clearLocalStorage}> Logout </Button></NavLink>
                 </NavItem>
             </Nav>
         </Navbar>

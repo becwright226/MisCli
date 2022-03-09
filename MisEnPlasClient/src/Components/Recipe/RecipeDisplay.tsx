@@ -19,6 +19,7 @@ import Recipe from './RecipeIndex';
 
 interface RecipeDisplayProps {
     token: string
+    trigger: boolean
   
     
     
@@ -69,7 +70,11 @@ class RecipeDisplay extends Component <RecipeDisplayProps, RecipeDisplayState> {
     })
     console.log(recipe)
 }
-
+componentDidUpdate(prevProps: RecipeDisplayProps, prevState: RecipeDisplayState) {
+    if (this.props.trigger!=prevProps.trigger){
+        this.fetchRecipes()
+    }
+}
     componentDidMount = () => {
         this.fetchRecipes()
     }

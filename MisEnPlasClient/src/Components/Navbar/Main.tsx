@@ -10,7 +10,7 @@ import { Component } from 'react';
 //import PostIndex from '../Post/PostIndex';
 
 interface MainProps {
-  clearLocalStorage: (token:string) => void
+  clearLocalStorage: () => void
   token: string
   //posts: object[]
 }
@@ -26,7 +26,7 @@ class Main extends Component<MainProps> {
         return (
         
         <React.Fragment>
-            <Router>
+          
                 <Nav clearLocalStorage={this.props.clearLocalStorage}/>
                 <Routes>
                      <Route path="/" element={ <Post token={this.props.token} /> } />
@@ -36,7 +36,7 @@ class Main extends Component<MainProps> {
                     <Route  path="/schedule" element={ <Sched token={this.props.token} /> } />
                   
                 </Routes> 
-            </Router>
+          
         </React.Fragment>  
         );
     }

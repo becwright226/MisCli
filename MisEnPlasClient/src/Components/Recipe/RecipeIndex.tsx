@@ -7,27 +7,35 @@ import './Recipe.css'
 
 interface RecipeProps {
     token:string
+
 }
  
 interface RecipeState {
-    
+   trigger: boolean 
 }
  
 class Recipe extends Component<RecipeProps, RecipeState> {
     constructor(props: RecipeProps) {
         super(props);
-       // this.state = { :  };
+        this.state = { 
+            trigger: false  };
     }
+
+
+    triggerMethod = () => {
+        this.setState({trigger:!this.state.trigger})
+    }
+
     render() { 
         
         return (  
         <Container className='recipe-main' style={{float:'right'}}>
            <Row>
               <Col md='4'>
-              <RecipeCreate token={this.props.token} /> 
+              <RecipeCreate triggerMethod={this.triggerMethod} token={this.props.token} /> 
               </Col> 
                   <Col md='8'>
-                     <RecipeDisplay token={this.props.token} /> 
+                     <RecipeDisplay token={this.props.token} trigger={this.state.trigger}/> 
                   </Col>      
               </Row>
               <Col md='12'>

@@ -5,7 +5,7 @@ import '../Auth.css'
 import { Link } from 'react-router-dom';
 
 interface AuthBarProps {
-  updateLocalStorage: (newToken: string) => void
+  updateLocalStorage: (newToken: string, newRole: string) => void
 }
  
 interface AuthBarState {

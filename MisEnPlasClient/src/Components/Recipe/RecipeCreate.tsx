@@ -12,7 +12,7 @@ import {
 
 interface RecipeCreateProps {
     token: string
-   // role: 'Admin'?
+    triggerMethod: Function
 }
  
 interface RecipeCreateState {
@@ -60,7 +60,7 @@ class RecipeCreate extends React.Component<RecipeCreateProps, RecipeCreateState>
            })
            const data = await res.json()
            console.log(data)
-          
+          this.props.triggerMethod()
        } catch (error) {
            console.log({error})
        }

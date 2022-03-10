@@ -18,9 +18,7 @@ import ScheduleEdit from './ScheduleEdit';
 
 interface SchedDisplayProps {
     token: string
-
-    
-    
+    trigger: boolean;
 }
 
 interface SchedDisplayState {
@@ -50,10 +48,11 @@ class SchedDisplay extends Component <SchedDisplayProps, SchedDisplayState> {
                 headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': String(localStorage.getItem('token'))
+                
               })
             })
             const data= await res.json()
-            this.setState({schedules: data.allSchedules})
+            this.setState({schedules: data.allSchedules}) 
             console.log(data)
             console.log(this.state.schedules)
         } catch (error) {
@@ -68,7 +67,16 @@ class SchedDisplay extends Component <SchedDisplayProps, SchedDisplayState> {
             updatePressed: true
     })
     console.log(schedule)
-}
+};
+
+componentDidUpdate(
+    prevProps: SchedDisplayProps,
+    prevState: SchedDisplayState
+  ) {
+    if (this.props.trigger != prevProps.trigger) {
+      this.fetchScheds();
+    }
+  }
 
     componentDidMount = () => {
         this.fetchScheds()
@@ -102,8 +110,6 @@ class SchedDisplay extends Component <SchedDisplayProps, SchedDisplayState> {
                    {schedMapper()}  
                   </Col>
               </Row>
-              <Col md='12'>
-              </Col>
           </Container>
             </>
          );

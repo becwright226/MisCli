@@ -12,14 +12,20 @@ interface SchedIndexProps {
 }
  
 interface SchedIndexState {
-    
+    trigger: boolean 
 }
  
 class SchedIndex extends React.Component<SchedIndexProps, SchedIndexState> {
     constructor(props: SchedIndexProps) {
         super(props);
-        //this.state = { :  };
+        this.state = { 
+            trigger: false  };
     }
+
+    triggerMethod = () => {
+        this.setState({trigger:!this.state.trigger})
+    }
+
     render() { 
         return ( 
             <>
@@ -27,15 +33,12 @@ class SchedIndex extends React.Component<SchedIndexProps, SchedIndexState> {
         <Container className='schedule-main' style={{float:'right'}}>
            <Row>
               <Col md='4'>
-              <SchedCreate token={this.props.token}/>
+              <SchedCreate triggerMethod={this.triggerMethod} token={this.props.token}/>
               </Col> 
                   <Col md='8'>
-                     <SchedDisplay token={this.props.token} /> 
+                     <SchedDisplay token={this.props.token} trigger={this.state.trigger} /> 
                   </Col>      
               </Row>
-              <Col md='12'>
-                  
-              </Col>
         </Container></>
             );
     }

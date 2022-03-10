@@ -4,6 +4,7 @@ import SchedIndex from './SchedIndex';
 
 interface SchedCreateProps {
   token: string  
+  triggerMethod: Function
   
 }
  
@@ -45,6 +46,8 @@ class SchedCreate extends Component<SchedCreateProps, SchedCreateState> {
                       })
                     })
                     const data = await res.json()
+                    console.log(data)
+                    this.props.triggerMethod()
 
                     this.setState({
                         date: '',
@@ -76,11 +79,7 @@ class SchedCreate extends Component<SchedCreateProps, SchedCreateState> {
                     </FormGroup>
                     <FormGroup>
                         <Label for="empAssign">Employee Assignment</Label>
-                        <Input id="li_empAssign" type='text' name="empAssign" placeholder="ex. Phil, morning crew, etc." onChange={(e:any) => this.setState({empAssign: e.target.value})} value={this.state.empAssign}> 
-                        <option> BOH </option>
-                        <option > FOH </option>
-                        <option > All Staff </option>
-                        </Input>
+                        <Input id="li_empAssign" type='text' name="empAssign" placeholder="ex. Phil, morning crew, etc." onChange={(e:any) => this.setState({empAssign: e.target.value})} value={this.state.empAssign}/> 
                     </FormGroup>
                     <Button type="submit" className="btn" style={{backgroundColor:'#a7719e', color: 'black'}}> Submit </Button>
             </Form>

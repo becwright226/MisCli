@@ -75,8 +75,8 @@ const App = () => {
         }
       />
           <Route
-        path="/main"
-        element={ token? <Main clearLocalStorage={clearLocalStorage} token={token as string}  /> : <Navigate to='/login'replace/>
+        path="/main/*"
+        element={ token?  <Main clearLocalStorage={clearLocalStorage} token={token as string}  /> : <Navigate to='/login'replace/>
           
         }
       />

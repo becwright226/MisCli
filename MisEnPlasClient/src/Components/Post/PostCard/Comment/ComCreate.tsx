@@ -1,13 +1,27 @@
 import React, { Component } from 'react'
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Button, ModalHeader, ModalBody, Modal } from 'reactstrap';
+import {Accordion} from 'react-bootstrap'
 
 interface ComCreateProps {
     token: string
+    triggerMethod: Function
+    post: postData 
+  
+}
+
+interface postData {
+    id: string,
+    date: string,
+   title: string,
+   content: string
+   role: string
+   model: boolean
 }
  
 interface ComCreateState {
    date: string,
    content: string 
+   model: boolean
 }
  
 class ComCreate extends Component<ComCreateProps, ComCreateState> {
@@ -15,7 +29,9 @@ class ComCreate extends Component<ComCreateProps, ComCreateState> {
         super(props);
        this.state = { 
            date: '',
-           content: '' 
+           content: '',
+           model: false 
+
          };
     }
 
@@ -26,7 +42,7 @@ class ComCreate extends Component<ComCreateProps, ComCreateState> {
             content: this.state.content
         } 
         try {
-            const res = await fetch('http://localhost:2206/:postId', {
+            const res = await fetch(`http://localhost:2206/comment/${this.props.post.id}`, {
                 method: 'POST',
                 body: JSON.stringify(requestObject),
                 headers: new Headers({
@@ -35,15 +51,31 @@ class ComCreate extends Component<ComCreateProps, ComCreateState> {
             })
         })
         const data = await res.json()
+        this.props.triggerMethod()
+            this.setState({
+                date: '', 
+                content: '',
+                model: false 
+
+            })
 
     } catch (error) {
         console.log({error})
     }
 }
+
+modal = () => {
+    this.setState({model: !this.state.model})
+}
+
     render() { 
         return ( 
             <>
-            <Form onSubmit={this.handleSubmit}>
+            <Button className='comm-btn m-2' style={{backgroundColor:'#b2d33a', float:'left',color: 'black'}} onClick={this.modal}>Comment</Button>
+            <Modal isOpen={this.state.model}>
+                <ModalHeader> Post your comment</ModalHeader>
+                <ModalBody>
+                    <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label for="date">Date</Label>
                         <Input id="li_date" type="date" name="date" placeholder="enter the date" onChange={(e:any) => this.setState({date: e.target.value})} value={this.state.date} />
@@ -54,6 +86,8 @@ class ComCreate extends Component<ComCreateProps, ComCreateState> {
                     </FormGroup>
                     <Button type="submit" className="btn" > Submit </Button>
             </Form>
+            </ModalBody>
+            </Modal>
           
             </>
         );

@@ -11,12 +11,15 @@ import {
   CardSubtitle,
 } from "reactstrap";
 import PostCreate from "../PostCreate";
+import ComCreate from "./Comment/ComCreate";
+import ComIndex from "./Comment/ComIndex";
 import PostDelete from "./PostDelete";
 import PostEdit from "./PostEdit";
 
 interface PostDisplayProps {
   token: string;
   trigger: boolean;
+ // model: boolean
 }
 
 interface PostDisplayState {
@@ -125,6 +128,9 @@ class PostDisplay extends Component<PostDisplayProps, PostDisplayState> {
                     fetchPosts={this.fetchPosts}
                     post={post}
                   />
+                </Col>
+                <Col md='12'>
+                <ComIndex token={this.props.token} post={post} trigger={this.props.trigger}/>
                 </Col>
               </Row>
             </CardFooter>

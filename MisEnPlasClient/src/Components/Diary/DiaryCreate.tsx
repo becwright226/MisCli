@@ -4,6 +4,7 @@ import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 
 interface DiaryCreateProps {
     token: string
+    triggerMethod: Function
 }
  
 interface DiaryCreateState {
@@ -40,6 +41,8 @@ class DiaryCreate extends Component<DiaryCreateProps, DiaryCreateState> {
            })
            const data = await res.json()
            console.log(data)
+           this.props.triggerMethod()
+
            this.setState({
            date: '',
            title: '',

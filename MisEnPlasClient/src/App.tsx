@@ -89,7 +89,7 @@ const App = () => {
       />
        <Route
         path="/recipe"
-        element={ token? <Recipe clearLocalStorage={clearLocalStorage} token={token as string}  /> : <Navigate to='/main'replace/>
+        element={ token? <Recipe clearLocalStorage={clearLocalStorage} token={token as string}   /> : <Navigate to='/main'replace/> //Do I add this? role={role as string}
           
         }
       />

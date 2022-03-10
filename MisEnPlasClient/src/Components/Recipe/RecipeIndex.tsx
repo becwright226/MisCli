@@ -43,9 +43,6 @@ class Recipe extends Component<RecipeProps, RecipeState> {
                      <RecipeDisplay token={this.props.token} trigger={this.state.trigger}/> 
                   </Col>      
               </Row>
-              <Col md='12'>
-                  
-              </Col>
         </Container>
             </>
             );

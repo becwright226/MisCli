@@ -12,14 +12,21 @@ interface DiaryProps {
 }
  
 interface DiaryState {
-    
+    trigger: boolean 
 }
  
 class Diary extends Component<DiaryProps, DiaryState> {
     constructor(props: DiaryProps) {
         super(props);
-       // this.state = { :  };
+        this.state = { 
+            trigger: false  };
     }
+
+    triggerMethod = () => {
+        this.setState({trigger:!this.state.trigger})
+    }
+
+
     render() { 
         return ( 
             <>
@@ -27,10 +34,10 @@ class Diary extends Component<DiaryProps, DiaryState> {
             <Container className='diary-main' style={{float:'right'}}>
             <Row>
           <Col md='4'>
-          <DiaryCreate token={this.props.token} />
+          <DiaryCreate triggerMethod={this.triggerMethod} token={this.props.token} />
           </Col> 
               <Col md='8'>
-                 <DiaryDisplay token={this.props.token} /> 
+                 <DiaryDisplay token={this.props.token} trigger={this.state.trigger}/> 
               </Col>      
           </Row>
         </Container></>

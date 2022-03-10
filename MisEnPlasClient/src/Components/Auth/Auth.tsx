@@ -32,7 +32,7 @@ class Auth extends React.Component<AuthProps, AuthState> {
     render() { 
       const {isLogin} = this.state;
         return ( 
-          <div >
+          <div className='auth-div' >
             {/*<AuthMain updateLocalStorage={this.props.updateLocalStorage}/>*/}
       
            {!isLogin ? (

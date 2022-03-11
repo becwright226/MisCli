@@ -4,19 +4,33 @@ import {
     Button,
     FormGroup,
     Input,
-    Label
+    Label,
+    Modal,
+    ModalBody,
+    ModalHeader
 } from 'reactstrap';
 
 
 interface LogCreateProps {
     token: string
-   
+    triggerMethod: Function
+    schedule: schedData
+}
+
+interface schedData {
+    id: string,
+    date: string,
+    task: string,
+    desc: string,
+    empAssign?: string
+    model: boolean
 }
  
 interface LogCreateState {
     date: string;
     task: string;
     time: number;
+    model: boolean
 
     
 }
@@ -28,6 +42,7 @@ class LogCreate extends Component<LogCreateProps, LogCreateState> {
             date: '', 
             task: '',
             time: 0,
+            model: false
         };
     }
 
@@ -39,7 +54,7 @@ class LogCreate extends Component<LogCreateProps, LogCreateState> {
             time: this.state.time,
         } 
         try {
-            const res = await fetch('http://localhost:2206/log/:scheduleId', {
+            const res = await fetch(`http://localhost:2206/log/${this.props.schedule.id}`, {
                 method: 'POST',
                 body: JSON.stringify(requestObject),
                 headers: new Headers({
@@ -48,6 +63,7 @@ class LogCreate extends Component<LogCreateProps, LogCreateState> {
               })
             })
             const data = await res.json()
+            this.props.triggerMethod()
             this.setState ({ 
                 date: '', 
                 task: '',
@@ -59,9 +75,17 @@ class LogCreate extends Component<LogCreateProps, LogCreateState> {
         }
     }
 
+    modal = () => {
+        this.setState({model: !this.state.model})
+    }
+
     render() { 
         return ( 
             <>
+            <Button className='comm-btn m-2' style={{backgroundColor:'#b2d33a', float:'left',color: 'black'}} onClick={this.modal}>Comment</Button>
+            <Modal isOpen={this.state.model}>
+                <ModalHeader> Record your work log: </ModalHeader>
+                <ModalBody>
             <Form onSubmit={this.handleSubmit}>
             <FormGroup>
                         <Label for="date">Date</Label>
@@ -77,6 +101,8 @@ class LogCreate extends Component<LogCreateProps, LogCreateState> {
                     </FormGroup>
                     <Button type="submit" className="btn" > Submit </Button>
             </Form>
+            </ModalBody>
+            </Modal>
             </>
          );
     }

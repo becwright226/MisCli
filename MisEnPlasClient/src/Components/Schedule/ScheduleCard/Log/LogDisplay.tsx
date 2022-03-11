@@ -12,44 +12,44 @@ import {
   CardSubtitle,
 } from "reactstrap";
 import {Accordion} from 'react-bootstrap'
-import ComEdit from "./ComEdit";
-import ComDelete from "./ComDelete";
+import LogEdit from "./LogEdit";
 
 
-interface ComDisplayProps {
+
+interface LogDisplayProps {
   token: string;
   trigger: boolean;
-  post: postData
+  schedule: schedData
 }
 
-interface postData {
+interface schedData {
     id: string,
     date: string,
-   title: string,
-   content: string
-   role: string
-   model: boolean
+    task: string,
+    desc: string,
+    empAssign?: string
+    model: boolean
 }
 
-interface ComDisplayState {
-  comments: object[];
+interface LogDisplayState {
+  logs: object[];
   updatePressed: boolean;
-  commentToUpdate: object;
+  logToUpdate: object;
 }
 
-class ComDisplay extends Component<ComDisplayProps, ComDisplayState> {
-  constructor(props: ComDisplayProps) {
+class LogDisplay extends Component<LogDisplayProps, LogDisplayState> {
+  constructor(props: LogDisplayProps) {
     super(props);
     this.state = {
-      comments: [],
+      logs: [],
       updatePressed: false,
-      commentToUpdate: {},
+      logToUpdate: {},
     };
   }
 
-  fetchComments = async () => {
+  fetchLogs = async () => {
     try {
-      const res = await fetch(`http://localhost:2206/comment/${this.props.post.id}`, {
+      const res = await fetch(`http://localhost:2206/log/${this.props.schedule.id}`, {
         method: "GET",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -57,38 +57,38 @@ class ComDisplay extends Component<ComDisplayProps, ComDisplayState> {
         }),
       });
       const data = await res.json();
-      this.setState({ comments: data });
+      this.setState({ logs: data });
       console.log(data);
-      console.log(this.state.comments);
+      console.log(this.state.logs);
     } catch (error) {
       console.log({ error });
     }
   };
 
-  setUpdatedComment = (e: any, comment: any) => {
+  setUpdatedLog = (e: any, log: any) => {
     this.setState({
-      commentToUpdate: comment,
+      logToUpdate: log,
       updatePressed: true,
     });
-    console.log(comment);
+    console.log(log);
   };
 
   componentDidUpdate(
-    prevProps: ComDisplayProps,
-    prevState: ComDisplayState
+    prevProps: LogDisplayProps,
+    prevState: LogDisplayState
   ) {
     if (this.props.trigger != prevProps.trigger) {
-      this.fetchComments();
+      this.fetchLogs();
     }
   }
 
   componentDidMount = () => {
-    this.fetchComments();
+    this.fetchLogs();
   };
 
   render() {
-    const commentMapper = () => {
-      return this.state.comments.map((comment: any, index: any) => {
+    const logMapper = () => {
+      return this.state.logs.map((log: any, index: any) => {
         return (
 
     <Accordion
@@ -106,7 +106,7 @@ class ComDisplay extends Component<ComDisplayProps, ComDisplayState> {
         <Accordion.Header
     className="postcard-title p-2"
     // scope="row"
-    style={{ fontSize: "15pt" }}>User Comment</Accordion.Header>      
+    style={{ fontSize: "15pt" }}>Work Log</Accordion.Header>      
     </Col>
          </Row>
 
@@ -116,42 +116,28 @@ class ComDisplay extends Component<ComDisplayProps, ComDisplayState> {
     backgroundColor: " rgb(224, 231, 224)",
     color: "black",
     fillOpacity: "100%"}}>
-        {comment.date}
-      {comment.content}
+        {log.date}
+        {log.time}
+      {log.desc}
       <Row>
     <Col>
     
-    <ComEdit
-               comment={comment}
+    <LogEdit
+               log={log}
                token={this.props.token}
-               fetchComments={this.fetchComments}
+               fetchLogs={this.fetchLogs}
              />
     </Col>
     <Col>
-    <ComDelete
+    {/* <LogDelete
                token={this.props.token}
-               fetchComments={this.fetchComments}
-              comment={comment}
-             />
+               fetchLogs={this.fetchLogs}
+               log={log}
+             /> */}
     </Col>
     </Row>
 
     </Accordion.Body>
-   
-    {/* <Row className="postcard-button">
-             
-                  <ComEdit
-                    comment={comment}
-                    token={this.props.token}
-                    fetchComments={this.fetchComments}
-                  />
-                  <ComDelete
-                    token={this.props.token}
-                    fetchComments={this.fetchComments}
-                   comment={comment}
-                  />
-               
-              </Row> */}
 
     </Accordion.Item>
     </Accordion>
@@ -165,7 +151,7 @@ class ComDisplay extends Component<ComDisplayProps, ComDisplayState> {
       <>
         <Container>
           <Row>
-            {commentMapper()}
+            {logMapper()}
           </Row>
         </Container>
       </>
@@ -173,4 +159,4 @@ class ComDisplay extends Component<ComDisplayProps, ComDisplayState> {
   }
 }
 
-export default ComDisplay;
+export default LogDisplay;

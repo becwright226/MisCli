@@ -41,10 +41,11 @@ class ComIndex extends Component<ComIndexProps, ComIndexState> {
     render() { 
         return ( 
             <Container>
+                  <Row>
                  <Col md='4'>
                         <ComCreate triggerMethod={this.triggerMethod} token={this.props.token} post={this.props.post}/>
                     </Col>
-                <Row>
+               
                     <Col>
                         <ComDisplay post={this.props.post} token={this.props.token} trigger={this.props.trigger} />
                     </Col>

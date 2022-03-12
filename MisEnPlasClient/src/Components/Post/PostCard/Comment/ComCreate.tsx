@@ -71,7 +71,7 @@ modal = () => {
     render() { 
         return ( 
             <>
-            <Button className='comm-btn m-2' style={{backgroundColor:'#b2d33a', float:'left',color: 'black'}} onClick={this.modal}>Comment</Button>
+            <Button className='comm-btn m-2' style={{backgroundColor:'#a7719e', float:'left',color: 'black'}} onClick={this.modal}>Comment</Button>
             <Modal isOpen={this.state.model}>
                 <ModalHeader> Post your comment</ModalHeader>
                 <ModalBody>

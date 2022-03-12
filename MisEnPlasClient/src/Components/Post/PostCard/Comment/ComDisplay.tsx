@@ -10,6 +10,8 @@ import {
   CardFooter,
   Button,
   CardSubtitle,
+  CardHeader,
+  UncontrolledCollapse,
 } from "reactstrap";
 import {Accordion} from 'react-bootstrap'
 import ComEdit from "./ComEdit";
@@ -91,70 +93,133 @@ class ComDisplay extends Component<ComDisplayProps, ComDisplayState> {
       return this.state.comments.map((comment: any, index: any) => {
         return (
 
-    <Accordion
-    className="postcard m-5"
-            style={{
-              backgroundColor: " rgb(41, 61, 41)",
-              color: "#bbabc2",
-              opacity: "90%",
-              fontFamily: "Faustina",
-            }}
-            key={index}>
-    <Accordion.Item eventKey="0">
-    <Row className="postcard-button">
-        <Col>
-        <Accordion.Header
-    className="postcard-title p-2"
-    // scope="row"
-    style={{ fontSize: "15pt" }}>User Comment</Accordion.Header>      
-    </Col>
-         </Row>
+    // <Accordion
+    // className="postcard m-5"
+    //         style={{
+    //           backgroundColor: " rgb(41, 61, 41)",
+    //           color: "#bbabc2",
+    //           opacity: "90%",
+    //           fontFamily: "Faustina",
+    //         }}
+    //         key={index}>
+    // <Accordion.Item eventKey="0">
 
-    <Accordion.Body
-     className="postcard-content text-center"
-     style={{
-    backgroundColor: " rgb(224, 231, 224)",
-    color: "black",
-    fillOpacity: "100%"}}>
-        {comment.date}
-      {comment.content}
-      <Row>
-    <Col>
+
+    // <Row className="postcard-button">
+    //     <Col>
+    //     <Accordion.Header
+    // className="postcard-title p-2"
+    // // scope="row"
+    // style={{ fontSize: "15pt" }}>User Comment</Accordion.Header>      
+    // </Col>
+    //      </Row>
+
+    // <Accordion.Body
+    //  className="postcard-content text-center"
+    //  style={{
+    // backgroundColor: " rgb(224, 231, 224)",
+    // color: "black",
+    // fillOpacity: "100%"}}>
+    //     {comment.date}
+    //   {comment.content}
+    //   <Row>
+    // <Col>
     
-    <ComEdit
+    // <ComEdit
+    //            comment={comment}
+    //            token={this.props.token}
+    //            fetchComments={this.fetchComments}
+    //          />
+    // </Col>
+    // <Col>
+    // <ComDelete
+    //            token={this.props.token}
+    //            fetchComments={this.fetchComments}
+    //           comment={comment}
+    //          />
+    // </Col>
+    // </Row>
+
+    // </Accordion.Body>
+   
+    // {/* <Row className="postcard-button">
+             
+    //               <ComEdit
+    //                 comment={comment}
+    //                 token={this.props.token}
+    //                 fetchComments={this.fetchComments}
+    //               />
+    //               <ComDelete
+    //                 token={this.props.token}
+    //                 fetchComments={this.fetchComments}
+    //                comment={comment}
+    //               />
+               
+    //           </Row> */}
+
+    // // </Accordion.Item>
+    // // </Accordion>
+
+
+
+
+<>
+
+<Row className="postcard-button">
+    <Col>
+    <Button
+className="postcard-title p-2"
+id='toggler'
+
+
+style={{
+  backgroundColor: "#ac7b53",
+  color: "black",
+  opacity: "90%",
+  fontFamily: "Faustina",
+}}
+key={index}
+lg
+>User Comment</Button>      
+</Col>
+     </Row>
+<UncontrolledCollapse toggler="#toggler">
+
+<Card>
+<CardHeader>{comment.date}</CardHeader>
+<CardBody
+className="postcard-content text-center"
+style={{
+backgroundColor: " rgb(224, 231, 224)",
+color: "black",
+fillOpacity: "100%"}}
+>
+
+      {comment.content}
+  <Row>
+<Col>
+
+<ComEdit
                comment={comment}
                token={this.props.token}
                fetchComments={this.fetchComments}
              />
-    </Col>
-    <Col>
-    <ComDelete
+</Col>
+<Col>
+<ComDelete
                token={this.props.token}
                fetchComments={this.fetchComments}
               comment={comment}
              />
-    </Col>
-    </Row>
+</Col>
+</Row>
+</CardBody>
+</Card>
 
-    </Accordion.Body>
-   
-    {/* <Row className="postcard-button">
-             
-                  <ComEdit
-                    comment={comment}
-                    token={this.props.token}
-                    fetchComments={this.fetchComments}
-                  />
-                  <ComDelete
-                    token={this.props.token}
-                    fetchComments={this.fetchComments}
-                   comment={comment}
-                  />
-               
-              </Row> */}
+</UncontrolledCollapse>
 
-    </Accordion.Item>
-    </Accordion>
+
+</>
 
 
            

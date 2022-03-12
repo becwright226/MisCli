@@ -37,10 +37,13 @@ class Log extends Component<LogProps, LogState> {
     render() { 
         return ( 
         <Container>
+
             <Row>
                 <Col>
                 <LogCreate token={this.props.token} triggerMethod={this.triggerMethod} schedule={this.props.schedule} />
                 </Col>
+               </Row>
+               <Row> 
                 <Col>
                 <LogDisplay schedule={this.props.schedule} token={this.props.token} trigger={this.props.trigger} />
                 </Col>

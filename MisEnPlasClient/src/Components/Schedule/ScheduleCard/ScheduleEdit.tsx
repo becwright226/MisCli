@@ -69,7 +69,7 @@ class ScheduleEdit extends React.Component<SchedEditProps, SchedEditState> {
         console.log(this.props.schedule)
         return (
             <div>
-                <Button className='edit-btn m-2' style={{backgroundColor:'#b2d33a', float:'left',color: 'black'}} onClick={this.modal}>Update</Button>
+                <Button className='edit-btn m-2 pl-4 pr-4' style={{backgroundColor:'#b2d33a', float:'left',color: 'black'}} onClick={this.modal}>Update</Button>
                 <Modal isOpen={this.state.model} >
                 <ModalHeader >Schedule Update</ModalHeader>
                 <ModalBody>

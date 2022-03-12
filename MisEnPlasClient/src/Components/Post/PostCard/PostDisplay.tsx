@@ -112,6 +112,8 @@ class PostDisplay extends Component<PostDisplayProps, PostDisplayState> {
             </CardBody>
             <CardFooter className="postcard-footer text-center">
               <Row className="postcard-button">
+
+
                 <Col>
                   <ComIndex
                     token={this.props.token}
@@ -135,6 +137,7 @@ class PostDisplay extends Component<PostDisplayProps, PostDisplayState> {
                 </Col>
               </Row>
             </CardFooter>
+            <Col></Col>
           </Card>
         );
       });

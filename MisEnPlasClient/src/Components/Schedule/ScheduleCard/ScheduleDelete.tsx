@@ -56,7 +56,7 @@ class ScheduleDelete extends Component<ScheduleDeleteProps, ScheduleDeleteState>
     render() { 
         return ( 
             <div>
-                <Button onClick={this.scheduleDelete} className='edit-btn m-2' style={{backgroundColor:'#d3773a', float: 'right', color: 'black'}}>Delete</Button>
+                <Button onClick={this.scheduleDelete} className='edit-btn m-2 pl-4 pr-4' style={{backgroundColor:'#d3773a', float: 'right', color: 'black'}}>Delete</Button>
             </div>
          );
     }

@@ -94,26 +94,18 @@ class LogDisplay extends Component<LogDisplayProps, LogDisplayState> {
       return this.state.logs.map((log: any, index: any) => {
         return (
 
-
-
-
-
-
-
-
-
 <>
 
     <Row className="postcard-button">
         <Col>
         <Button
-    className="postcard-title p-2"
+    className="postcard-title m-2 pl-4 pr-4"
     id='toggler'
     
     
     style={{
-      backgroundColor: " rgb(41, 61, 41)",
-      color: "#bbabc2",
+      backgroundColor: "#ac7b53",
+      color: "black",
       opacity: "90%",
       fontFamily: "Faustina",
     }}
@@ -142,6 +134,8 @@ class LogDisplay extends Component<LogDisplayProps, LogDisplayState> {
                fetchLogs={this.fetchLogs}
              />
     </Col>
+    </Row>
+    <Row>
     <Col>
     <LogDelete
                token={this.props.token}

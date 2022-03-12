@@ -130,21 +130,21 @@ class SchedDisplay extends Component<SchedDisplayProps, SchedDisplayState> {
             <CardFooter className="schedcard-footer text-center">
               <Row className="schedcard-button">
                
-               <Col>
+               <Col md='4'>
                <Log 
                token={this.props.token}
                schedule={schedule}
                trigger={this.props.trigger}
                />
                </Col>
-                <Col>
+                <Col md='4' className="sched pl-5">
                   <ScheduleEdit
                     schedule={schedule}
                     token={this.props.token}
                     fetchScheds={this.fetchScheds}
                   />
                 </Col>
-                <Col>
+                <Col md='4' className="sched pr-4">
                   <ScheduleDelete
                     token={this.props.token}
                     fetchScheds={this.fetchScheds}

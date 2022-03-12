@@ -82,7 +82,7 @@ class LogCreate extends Component<LogCreateProps, LogCreateState> {
     render() { 
         return ( 
             <>
-            <Button className='comm-btn m-2' style={{backgroundColor:'#b2d33a', float:'left',color: 'black'}} onClick={this.modal}>Comment</Button>
+            <Button className='comm-btn m-2' style={{backgroundColor:'#a7719e', float:'left',color: 'black'}} onClick={this.modal}>Record Work</Button>
             <Modal isOpen={this.state.model}>
                 <ModalHeader> Record your work log: </ModalHeader>
                 <ModalBody>

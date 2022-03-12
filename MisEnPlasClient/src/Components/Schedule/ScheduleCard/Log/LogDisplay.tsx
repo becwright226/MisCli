@@ -10,9 +10,12 @@ import {
   CardFooter,
   Button,
   CardSubtitle,
+  UncontrolledCollapse,
+  CardHeader,
 } from "reactstrap";
 import {Accordion} from 'react-bootstrap'
 import LogEdit from "./LogEdit";
+import LogDelete from "./LogDelete";
 
 
 
@@ -91,34 +94,45 @@ class LogDisplay extends Component<LogDisplayProps, LogDisplayState> {
       return this.state.logs.map((log: any, index: any) => {
         return (
 
-    <Accordion
-    className="postcard m-5"
-            style={{
-              backgroundColor: " rgb(41, 61, 41)",
-              color: "#bbabc2",
-              opacity: "90%",
-              fontFamily: "Faustina",
-            }}
-            key={index}>
-    <Accordion.Item eventKey="0">
+
+
+
+
+
+
+
+
+<>
+
     <Row className="postcard-button">
         <Col>
-        <Accordion.Header
+        <Button
     className="postcard-title p-2"
-    // scope="row"
-    style={{ fontSize: "15pt" }}>Work Log</Accordion.Header>      
+    id='toggler'
+    
+    
+    style={{
+      backgroundColor: " rgb(41, 61, 41)",
+      color: "#bbabc2",
+      opacity: "90%",
+      fontFamily: "Faustina",
+    }}
+    key={index}
+    >Work Log</Button>      
     </Col>
          </Row>
+<UncontrolledCollapse toggler="#toggler">
 
-    <Accordion.Body
-     className="postcard-content text-center"
-     style={{
-    backgroundColor: " rgb(224, 231, 224)",
-    color: "black",
-    fillOpacity: "100%"}}>
-        {log.date}
-        {log.time}
-      {log.desc}
+<Card>
+<CardHeader>{log.date}----{log.time}min to complete</CardHeader>
+  <CardBody
+  className="postcard-content text-center"
+  style={{
+ backgroundColor: " rgb(224, 231, 224)",
+ color: "black",
+ fillOpacity: "100%"}}
+  >
+      {log.task}
       <Row>
     <Col>
     
@@ -129,18 +143,22 @@ class LogDisplay extends Component<LogDisplayProps, LogDisplayState> {
              />
     </Col>
     <Col>
-    {/* <LogDelete
+    <LogDelete
                token={this.props.token}
                fetchLogs={this.fetchLogs}
                log={log}
-             /> */}
+             />
     </Col>
     </Row>
+  </CardBody>
+</Card>
 
-    </Accordion.Body>
+</UncontrolledCollapse>
 
-    </Accordion.Item>
-    </Accordion>
+
+</>
+
+
 
 
            

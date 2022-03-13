@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Nav from './Navbar';
+import Nav from '../Footer/FooterNav';
 import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import Post from '../Post/PostIndex';
 import Recipe from '../Recipe/RecipeIndex'
@@ -12,6 +12,7 @@ import { Component } from 'react';
 interface MainProps {
   clearLocalStorage: () => void
   token: string
+  updateLocalStorage: (newToken: string, newRole: string) => void
   //posts: object[]
 }
  
@@ -27,7 +28,7 @@ class Main extends Component<MainProps> {
         
         <React.Fragment>
           
-                <Nav clearLocalStorage={this.props.clearLocalStorage}/>
+                <Nav token={this.props.token} clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage}/>
                 <Routes>
                     <Route path="/" element={ <Post clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} /> } />
                    <Route path="/order" element={ <Order clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> } />

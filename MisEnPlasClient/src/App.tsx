@@ -3,7 +3,6 @@ import { Button, Col, Container, Row } from "reactstrap";
 import Auth from "./Components/Auth/Auth";
 import { useState, useEffect } from "react";
 import Main from "./Components/Navbar/Main";
-import Footer from "./Components/Footer/Footer";
 import AuthMain from "./Components/Auth/Navbar/AuthMain";
 import Post from "./Components/Post/PostCreate";
 import { userInfo } from "os";
@@ -16,6 +15,8 @@ import OrderIndex from "./Components/Order/OrderIndex";
 import Recipe from "./Components/Recipe/RecipeIndex";
 import Diary from "./Components/Diary/DiaryIndex";
 import Sched from "./Components/Schedule/SchedIndex";
+import SiteBar from "./Components/Navbar/Navbar";
+import UserNav from "./Components/Footer/FooterNav";
 
 const App = () => {
   const [token, setToken] = useState<string | null>("");
@@ -42,72 +43,31 @@ const App = () => {
     setToken("");
   };
 
-  return (
-    <>
-    <Routes>
+  const protectedViews = () => {
+    return (token === localStorage.getItem('token') ? 
+    <Main clearLocalStorage={clearLocalStorage} token={token as string} updateLocalStorage={updateLocalStorage}/>
+    :  <AuthMain updateLocalStorage={updateLocalStorage}  clearLocalStorage={clearLocalStorage} token={token as string}/> )
+  }
 
-      <Route path="/efa" element={<Navigate replace to="/" />} />
-      <Route
-        path="/"
-        element={
-          !token ? (
-            <Auth updateLocalStorage={updateLocalStorage} />
-          ) : (
-            <Navigate to="/main" replace/> 
-          )
-        }
-      />
-      <Route
-        path="/signup"
-        element={<>
-        <AuthMain updateLocalStorage={updateLocalStorage}  />
-        <Signup updateLocalStorage={updateLocalStorage} />
-        </>}
-      />
-      <Route
-        path="/login"
-        element={
-          <> {!token ? <>
-            <Login updateLocalStorage={updateLocalStorage} /> </>
-    : <Navigate to="/main" replace/>      
-          }
-          </>
-        }
-      />
-          <Route
-        path="/main/*"
-        element={ token?  <Main clearLocalStorage={clearLocalStorage} token={token as string}  /> : <Navigate to='/login'replace/>
-          
-        }
-      />
-      <Route
-        path="/order"
-        element={ token? 
-         <OrderIndex clearLocalStorage={clearLocalStorage}  token={token as string}  /> : <Navigate to='/main'replace/>
-          
-        }
-      />
-       <Route
-        path="/recipe"
-        element={ token? <Recipe clearLocalStorage={clearLocalStorage} token={token as string}   /> : <Navigate to='/main'replace/> //Do I add this? role={role as string}
-          
-        }
-      />
-       <Route
-        path="/diary"
-        element={ token? <Diary clearLocalStorage={clearLocalStorage} token={token as string}  /> : <Navigate to='/main'replace/>
-          
-        }
-      />
-        <Route
-        path="/schedule"
-        element={ token? <Sched clearLocalStorage={clearLocalStorage} token={token as string}  /> : <Navigate to='/main'replace/>
-          
-        }
-      />
-    </Routes>
-    <Footer/>
+
+  return (
+
+
+
+
+  <>
+  {/* <UserNav  clearLocalStorage={clearLocalStorage} token={token} updateLocalStorage={updateLocalStorage} /> */}
+  
+  {protectedViews()}
     </>
+
+  
+
+
+
+
+
+    
   );
 };
 

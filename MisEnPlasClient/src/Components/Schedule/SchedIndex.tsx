@@ -6,6 +6,7 @@ import './Schedule.css'
 import SiteBar from '../Navbar/Navbar';
 
 
+
 interface SchedIndexProps {
     token: string
     clearLocalStorage: () => void
@@ -39,7 +40,9 @@ class SchedIndex extends React.Component<SchedIndexProps, SchedIndexState> {
                      <SchedDisplay token={this.props.token} trigger={this.state.trigger} /> 
                   </Col>      
               </Row>
-        </Container></>
+        </Container>
+
+        </>
             );
     }
 }

@@ -8,7 +8,6 @@ import {
     Col,
     CardHeader
 } from 'reactstrap';
-import Footer from '../Footer/Footer';
 import PostDisplay from './PostCard/PostDisplay'
 import PostCreate from './PostCreate';
 import './Post.css'

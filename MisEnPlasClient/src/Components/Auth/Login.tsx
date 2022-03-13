@@ -6,7 +6,10 @@ import AuthMain from "./Navbar/AuthMain";
 import NavigationHelper from "./NavigateHelper";
 
 interface LoginProps {
-  updateLocalStorage: (newToken: string, newRole: string) => void;
+  updateLocalStorage: (newToken: string, newRole: string) => void
+clearLocalStorage: () => void
+token: string
+
 }
 
 interface LoginState {
@@ -50,8 +53,8 @@ class Login extends Component<LoginProps, LoginState> {
   render() {
     return (
       <>
-        <NavigationHelper path={this.state.path}></NavigationHelper>
-        <AuthMain updateLocalStorage={this.props.updateLocalStorage} />
+       
+        {/* <AuthMain updateLocalStorage={this.props.updateLocalStorage} /> */}
         <div className="auth-main p-4 text-center">
           <Form onSubmit={this.handleSubmit} className="auth-form p-5 flex">
             <h1>Login</h1>
@@ -115,7 +118,7 @@ class Login extends Component<LoginProps, LoginState> {
             </Button>
             <br />
             <p>
-              <a href="/">New user? Sign-up</a>
+              <a href="/signup">New user? Sign-up</a>
             </p>
           </Form>
         </div>

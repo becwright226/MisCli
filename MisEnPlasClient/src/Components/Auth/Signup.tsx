@@ -4,7 +4,9 @@ import "./Auth.css";
 import AuthMain from "./Navbar/AuthMain";
 
 interface SignupProps {
-  updateLocalStorage: (newToken: string, newRole: string) => void;
+  updateLocalStorage: (newToken: string, newRole: string) => void
+clearLocalStorage: () => void
+token: string
 }
 
 interface SignupState {
@@ -62,7 +64,7 @@ class Signup extends Component<SignupProps, SignupState> {
   render() {
     return (
       <>
-        <AuthMain updateLocalStorage={this.props.updateLocalStorage} />
+        {/* <AuthMain updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} /> */}
         <div className="auth-main p-4" style={{alignItems:'center'}}>
           <Form onSubmit={this.handleSubmit} className="auth-form p-5">
             <h1 className="signhead text-center">Signup</h1>

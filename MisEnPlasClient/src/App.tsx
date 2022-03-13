@@ -83,25 +83,25 @@ const App = () => {
       <Route
         path="/order"
         element={ token? 
-         <OrderIndex clearLocalStorage={clearLocalStorage}  token={token as string}  /> : <Navigate to='/main'replace/>
+         <OrderIndex clearLocalStorage={clearLocalStorage}  token={token as string}  /> : <Navigate to='/login'replace/>
           
         }
       />
        <Route
         path="/recipe"
-        element={ token? <Recipe clearLocalStorage={clearLocalStorage} token={token as string}   /> : <Navigate to='/main'replace/> //Do I add this? role={role as string}
+        element={ token? <Recipe clearLocalStorage={clearLocalStorage} token={token as string}   /> : <Navigate to='/login'replace/> //Do I add this? role={role as string}
           
         }
       />
        <Route
         path="/diary"
-        element={ token? <Diary clearLocalStorage={clearLocalStorage} token={token as string}  /> : <Navigate to='/main'replace/>
+        element={ token? <Diary clearLocalStorage={clearLocalStorage} token={token as string}  /> : <Navigate to='/login'replace/>
           
         }
       />
         <Route
         path="/schedule"
-        element={ token? <Sched clearLocalStorage={clearLocalStorage} token={token as string}  /> : <Navigate to='/main'replace/>
+        element={ token? <Sched clearLocalStorage={clearLocalStorage} token={token as string}  /> : <Navigate to='/login'replace/>
           
         }
       />

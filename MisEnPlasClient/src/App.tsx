@@ -18,6 +18,7 @@ import Sched from "./Components/Schedule/SchedIndex";
 import SiteBar from "./Components/Navbar/Navbar";
 import UserNav from "./Components/Footer/FooterNav";
 
+
 const App = () => {
   const [token, setToken] = useState<string | null>("");
   const [role, setRole] = useState<string | null>("");
@@ -45,8 +46,9 @@ const App = () => {
 
   const protectedViews = () => {
     return (token === localStorage.getItem('token') ? 
-    <Main clearLocalStorage={clearLocalStorage} token={token as string} updateLocalStorage={updateLocalStorage}/>
-    :  <AuthMain updateLocalStorage={updateLocalStorage}  clearLocalStorage={clearLocalStorage} token={token as string}/> )
+    <><Main clearLocalStorage={clearLocalStorage} token={token as string} updateLocalStorage={updateLocalStorage} /><SiteBar clearLocalStorage={clearLocalStorage} token={token as string} updateLocalStorage={updateLocalStorage} /></>
+    :  <AuthMain updateLocalStorage={updateLocalStorage}  clearLocalStorage={clearLocalStorage} token={token as string}/> 
+    )
   }
 
 
@@ -55,11 +57,11 @@ const App = () => {
 
 
 
-  <>
-  {/* <UserNav  clearLocalStorage={clearLocalStorage} token={token} updateLocalStorage={updateLocalStorage} /> */}
+  <div className="mainpage">  
+
   
   {protectedViews()}
-    </>
+    </ div>
 
   
 

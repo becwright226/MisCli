@@ -1,13 +1,16 @@
-.post-main {
-    background: url('../../assets/Postmep.jpeg')fixed;
-    background-size: cover;
+/* .post-main {
+    background: url('../../assets/Postmep.jpeg')100% fixed;
+    background-size:cover;
+    position: relative;
+    float: right;
+    z-index: 3;
     height: 100%;
     width: 100%;
     
-}
+} */
 
 .postcard {
-    background-color: #a7719e
+    background-color: #886382
 }
 
 .prac {

@@ -30,7 +30,7 @@ class SchedIndex extends React.Component<SchedIndexProps, SchedIndexState> {
     render() { 
         return ( 
             <>
-             <SiteBar clearLocalStorage={this.props.clearLocalStorage}  />
+            
         <Container className='schedule-main' style={{float:'right'}}>
            <Row>
               <Col md='4'>

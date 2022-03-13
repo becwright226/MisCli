@@ -47,7 +47,17 @@ class Signup extends Component<SignupProps, SignupState> {
         }),
       });
       const data = await res.json();
-      this.props.updateLocalStorage(data.token, data.user.role);
+
+      if(res.status===409){
+        alert("Email already registered, please sign in")
+      } else if (res.status===500){
+        alert('Issue registering user, try again')
+      } else {
+        this.props.updateLocalStorage(data.token, data.user.role);
+      }
+
+
+      // this.props.updateLocalStorage(data.token, data.user.role);
 
       this.setState({
         firstName: "",
@@ -57,7 +67,7 @@ class Signup extends Component<SignupProps, SignupState> {
         role: "BOH",
       });
     } catch (error) {
-      console.log({ error });
+      console.error()
     }
   };
 
@@ -65,8 +75,8 @@ class Signup extends Component<SignupProps, SignupState> {
     return (
       <>
         {/* <AuthMain updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} /> */}
-        <div className="auth-main p-4" style={{alignItems:'center'}}>
-          <Form onSubmit={this.handleSubmit} className="auth-form p-5">
+        <div className="auth-main pt-4 p-4" style={{alignItems:'center'}}>
+          <Form onSubmit={this.handleSubmit} className="auth-form  m-5 p-3 text-center">
             <h1 className="signhead text-center">Signup</h1>
             <FormGroup className="form text-center">
               <Label for="firstname">First Name</Label>
@@ -149,7 +159,7 @@ class Signup extends Component<SignupProps, SignupState> {
                 </option>
               </Input>
             </FormGroup>
-            <Button type="submit" className="btn">
+            <Button type="submit" className="btn" style={{backgroundColor:'#886382'}}>
               {" "}
               Submit{" "}
             </Button>

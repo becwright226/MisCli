@@ -30,39 +30,52 @@ class Login extends Component<LoginProps, LoginState> {
     };
   }
 
-  handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const requestObject = {
       email: this.state.email,
       password: this.state.password,
       role: this.state.role,
     };
-    fetch("http://localhost:2206/user/login", {
+    try {
+    const res = await fetch("http://localhost:2206/user/login", {
       method: "POST",
       body: JSON.stringify(requestObject),
       headers: new Headers({
         "Content-Type": "application/json",
       }),
     })
-      .then((response) => response.json())
-      .then((data) => {
+      const data = await res.json()
+
+      if(res.status===401){
+        alert("Incorrect Email or Password")
+      } else if (res.status===444){
+        alert('Failed to log user in, try again')
+      } else {
         this.props.updateLocalStorage(data.token, data.user.role);
-      });
-  };
+      }
+
+      // .then((data) => {
+      //   this.props.updateLocalStorage(data.token, data.user.role);
+      // })
+  } catch (error) {
+    console.error()
+  }
+}
 
   render() {
     return (
       <>
        
         {/* <AuthMain updateLocalStorage={this.props.updateLocalStorage} /> */}
-        <div className="auth-main p-4 text-center">
+        <div className="auth-main p-4 text-center" style={{alignItems:'center'}}>
           <Form onSubmit={this.handleSubmit} className="auth-form p-5 flex">
             <h1>Login</h1>
             <FormGroup>
               <Label for="email">Email</Label>
               <Input
-                style={{ backgroundColor: "burlywood", width: "75%" }}
-                className="input"
+                style={{ backgroundColor: "burlywood", width: "75%", marginLeft: '13%' }}
+                className="input text-center"
                 type="email"
                 name="email"
                 placeholder="enter email"
@@ -74,7 +87,7 @@ class Login extends Component<LoginProps, LoginState> {
             <FormGroup>
               <Label className="password">Password</Label>
               <Input
-                style={{ backgroundColor: "burlywood", width: "75%" }}
+                style={{ backgroundColor: "burlywood", width: "75%", marginLeft: '13%' }}
                 className="input"
                 type="password"
                 name="password"
@@ -89,7 +102,7 @@ class Login extends Component<LoginProps, LoginState> {
             <FormGroup>
               <Label for="role">Role</Label>
               <Input
-                style={{ backgroundColor: "burlywood", width: "75%" }}
+                style={{ backgroundColor: "burlywood", width: "75%", marginLeft: '13%' }}
                 className="input"
                 type="select"
                 name="role"
@@ -112,7 +125,7 @@ class Login extends Component<LoginProps, LoginState> {
                 </option>
               </Input>
             </FormGroup>
-            <Button type="submit" className="btn">
+            <Button type="submit" className="btn" style={{backgroundColor:'#886382'}}>
               {" "}
               Submit{" "}
             </Button>

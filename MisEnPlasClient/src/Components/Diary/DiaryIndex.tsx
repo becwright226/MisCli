@@ -30,7 +30,6 @@ class Diary extends Component<DiaryProps, DiaryState> {
     render() { 
         return ( 
             <>
-            <SiteBar clearLocalStorage={this.props.clearLocalStorage}  />
             <Container className='diary-main' style={{float:'right'}}>
             <Row>
           <Col md='4'>

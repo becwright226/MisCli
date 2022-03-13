@@ -1,55 +1,88 @@
-import React from 'react';
+import React, {Component, useState} from 'react';
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import {
+    Menu,
+    MenuItem,
+    ProSidebar,
+    SidebarHeader,
+    SubMenu,
+  } from "react-pro-sidebar";
+  import "react-pro-sidebar/dist/css/styles.css";
+  import { Link } from "react-router-dom"
+
 import './Main.css'
+import {BiFoodMenu, BiTachometer} from 'react-icons/bi'
+import { GiCook, GiPayMoney } from 'react-icons/gi';
+import {SiLivejournal} from 'react-icons/si';
+import {GrRestaurant} from 'react-icons/gr';
+import {AiOutlineSchedule} from 'react-icons/ai';
+import {IoRestaurant} from 'react-icons/io5';
+import { MdOutlineFoodBank} from 'react-icons/md'
+import { ToggleButton } from 'react-bootstrap';
 
 interface SiteBarProps {
     clearLocalStorage: () => void
+    token:string
+    updateLocalStorage: (newToken: string, newRole: string) => void
 }
 interface SiteBarState {
-    token:string
+    collapsed: boolean
 }
  
 
  
-class SiteBar extends React.Component<SiteBarProps, SiteBarState> {
+class SiteBar extends Component<SiteBarProps, SiteBarState> {
     constructor(props: SiteBarProps) {
         super(props);
+        this.state = {
+            collapsed: false
+        }
     
     }
 
+
+
+
+    collapse = () => {
+        this.setState({collapsed: !this.state.collapsed})
+    }
+
     
+
+
     render() { 
 
     return (
-        <Navbar dark expand="lg" className='main-nav'>
-            <NavbarBrand href="/main">
-                Home
-            </NavbarBrand>
-            <Nav className="ml-auto" >
-                <NavItem>
-                    <NavLink><Link to='/order' className="site-link"> Orders </Link></NavLink>
-                </NavItem>
-                <NavItem>
-                   <NavLink><Link to="/recipe" className="site-link"> Recipes </Link></NavLink> 
-                </NavItem>
-                <NavItem>
-                    <NavLink><Link to="/diary" className="site-link"> Shift Diary </Link></NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink><Link to="/schedule" className="site-link"> Schedules </Link></NavLink>
-                </NavItem>   
-                <NavItem>
-                <NavLink> <Link to='/logout' onClick={this.props.clearLocalStorage}> Logout </Link></NavLink>
-                </NavItem>
-            </Nav>
 
+
+
+
+        <><ProSidebar collapsed collapsedWidth={'16%'}  breakPoint='md' style={{height:'100vh', fontFamily:'Faustina, serif', opacity: '95%' }} className='side col-lg-2' >
+            <Nav aria-controls="responsive-navbar-nav">
+            <Menu id='responsive-navbar-nav' iconShape="square" style={{height:'100vh',backgroundColor:'rgb(41, 61, 41)' }}>
+        
+                <MenuItem icon={<SiLivejournal/>}> 
+                <Link to="/diary" className="site-link"> Shift Diary </Link> </MenuItem>
+                
+                
+                    <MenuItem icon={<MdOutlineFoodBank/>} ><Link to='/login' className="site-link"></Link> Restaurant Posts </MenuItem>
+            
+                
+                    <MenuItem icon={<AiOutlineSchedule />} ><Link to="/schedule" className="site-link"> Schedules </Link></MenuItem>
+                  
+              
+                    <MenuItem icon={<BiFoodMenu/>} ><Link to="/recipe" className="site-link"> Recipes Main </Link></MenuItem>
+                    
+               
+                    <MenuItem icon={<GiPayMoney />} ><Link to='/order' className="site-link"> Orders </Link> </MenuItem>
+            </Menu>
+            </Nav>
+        </ProSidebar>
+        </>
     
-          
-        </Navbar>
-    );
+     );
 }
-};
+}
 
 export default SiteBar;
 

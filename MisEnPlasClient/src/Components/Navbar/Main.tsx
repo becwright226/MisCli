@@ -10,6 +10,8 @@ import { Component } from 'react';
 import SchedIndex from '../Schedule/SchedIndex';
 import Signup from '../Auth/Signup';
 import Login from '../Auth/Login';
+import './Main.css'
+import SiteBar from './Navbar';
 //import PostIndex from '../Post/PostIndex';
 
 interface MainProps {
@@ -28,14 +30,16 @@ class Main extends Component<MainProps> {
     }
     render() { 
         return (
-        
-        <React.Fragment>
           
+        <React.Fragment >
+        
                 <Nav token={this.props.token} clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage}/>
+               
+             
                 <Routes>
-                    <Route path="/login" element={<> {this.props.token ? <> <Post clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> </> : <Login updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} />}</> } />
+                    <Route path="/login" element={<> {this.props.token ? <> <Post clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage} token={this.props.token}/> </> : <Login updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} />}</> } />
 
-                    <Route path="/signup" element={<> {this.props.token ? <> <Post clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> </> : <Signup updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} />}</> } />
+                    <Route path="/signup" element={<> {this.props.token ? <> <Post clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage} token={this.props.token}/> </> : <Signup updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} />}</> } />
 
                    <Route path="/order" element={ <> {this.props.token ? <><Order clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> </> : <Login updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} />}</> } />
 
@@ -51,6 +55,7 @@ class Main extends Component<MainProps> {
                 </Routes> 
           
         </React.Fragment>  
+        
         );
     }
 }

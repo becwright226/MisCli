@@ -33,7 +33,7 @@ class Recipe extends Component<RecipeProps, RecipeState> {
         
         return (  
             <>
-            <SiteBar clearLocalStorage={this.props.clearLocalStorage}  />
+           
         <Container className='recipe-main' style={{float:'right'}}>
            <Row>
               <Col md='4'>

@@ -29,7 +29,7 @@ class OrderIndex extends React.Component<OrderIndexProps, OrderIndexState> {
     render() { 
         return ( 
             <>
-              <SiteBar clearLocalStorage={this.props.clearLocalStorage}  />
+            
               <Container className='order-main' style={{float:'right'}}>
                 <Row>
               <Col md='4'>

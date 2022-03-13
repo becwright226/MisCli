@@ -40,7 +40,7 @@ class SiteBar extends React.Component<SiteBarProps, SiteBarState> {
                     <NavLink><Link to="/schedule" className="site-link"> Schedules </Link></NavLink>
                 </NavItem>   
                 <NavItem>
-                <NavLink> <Button onClick={this.props.clearLocalStorage}> Logout </Button></NavLink>
+                <NavLink> <Link to='/logout' onClick={this.props.clearLocalStorage}> Logout </Link></NavLink>
                 </NavItem>
             </Nav>
 

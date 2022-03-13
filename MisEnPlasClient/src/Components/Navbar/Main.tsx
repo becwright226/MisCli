@@ -8,6 +8,8 @@ import Diary from '../Diary/DiaryIndex';
 import Order from '../Order/OrderIndex';
 import { Component } from 'react';
 import SchedIndex from '../Schedule/SchedIndex';
+import Signup from '../Auth/Signup';
+import Login from '../Auth/Login';
 //import PostIndex from '../Post/PostIndex';
 
 interface MainProps {
@@ -31,15 +33,19 @@ class Main extends Component<MainProps> {
           
                 <Nav token={this.props.token} clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage}/>
                 <Routes>
-                    <Route path="/main" element={<> {this.props.token ? <> <Post clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> </> : <Navigate to="/login" replace/>}</> } />
+                    <Route path="/login" element={<> {this.props.token ? <> <Post clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> </> : <Login updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} />}</> } />
 
-                   <Route path="/order" element={ <> {this.props.token ? <><Order clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> </> : <Navigate to="/login" replace/>}</> } />
+                    <Route path="/signup" element={<> {this.props.token ? <> <Post clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> </> : <Signup updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} />}</> } />
 
-                   <Route path="/recipe" element={ <> {this.props.token ? <><Recipe clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> </> : <Navigate to="/login" replace/>}</> } />
+                   <Route path="/order" element={ <> {this.props.token ? <><Order clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> </> : <Login updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} />}</> } />
 
-                   <Route path="/diary" element={ <> {this.props.token ? <><Diary clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> </> : <Navigate to="/login" replace/>}</> } />
+                   <Route path="/recipe" element={ <> {this.props.token ? <><Recipe clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> </> : <Login updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} />}</> } />
 
-                   <Route path="/schedule" element={ <> {this.props.token ? <><SchedIndex clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> </> : <Navigate to="/login" replace/>}</> } />
+                   <Route path="/diary" element={ <> {this.props.token ? <><Diary clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> </> : <Login updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} />}</> } />
+
+                   <Route path="/schedule" element={ <> {this.props.token ? <><SchedIndex clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/> </> : <Login updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} />}</>} />
+
+                   <Route path="/logout" element={<Login  updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} />}/>
                     
                   
                 </Routes> 

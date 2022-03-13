@@ -1,5 +1,5 @@
 import React from 'react'
-
+import '../Navbar/Main.css'
 // import Navbar from 'react-bootstrap/NavBar'
 // import Nav from 'react-bootstrap/Nav'
 // import { NavItem, NavLink } from 'react-bootstrap'
@@ -31,8 +31,8 @@ class UserNav extends React.Component<UserNavProps, UserNavState> {
     return ( 
   
 
-  <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-  <Navbar.Brand href={'/'}  >Mis En Plas <GiCook/> </Navbar.Brand>
+  <Navbar collapseOnSelect expand="lg" className='main-nav' variant="dark">
+  <Navbar.Brand href={'/login'}  >Mis En Plas <GiCook/> </Navbar.Brand>
 
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
    <Navbar.Collapse id="responsive-navbar-nav">
@@ -43,7 +43,6 @@ class UserNav extends React.Component<UserNavProps, UserNavState> {
         <NavItem>
           <NavLink> <Link to='/signup'> SignUp </Link> </NavLink>
         </NavItem>
-
         <NavItem>
           <NavLink> <Link to='/login'> Login </Link> </NavLink>
         </NavItem>
@@ -51,7 +50,7 @@ class UserNav extends React.Component<UserNavProps, UserNavState> {
       ) : (
         <>
         <NavItem>
-          <NavLink> <Link to='/main'> Resturant Posts </Link> </NavLink>
+          <NavLink> <Link to='/login'> Resturant Posts </Link> </NavLink>
         </NavItem>
 
         <NavItem>
@@ -70,6 +69,10 @@ class UserNav extends React.Component<UserNavProps, UserNavState> {
           <NavLink> <Link to='/schedule'> Schedules </Link> </NavLink>
         </NavItem>
 
+        <NavItem> 
+        <NavLink> <Link to='/logout' onClick={this.props.clearLocalStorage}> Logout </Link> </NavLink>
+        </NavItem>
+
       <NavDropdown title="More" id="collasible-nav-dropdown">
 
         <NavDropdown.Item >
@@ -77,11 +80,6 @@ class UserNav extends React.Component<UserNavProps, UserNavState> {
         </NavDropdown.Item>
 
         <NavDropdown.Divider />
-
-        <NavDropdown.Item> 
-        <Button onClick={this.props.clearLocalStorage}> Logout </Button>
-        </NavDropdown.Item>
-
       </NavDropdown>
 </>
 

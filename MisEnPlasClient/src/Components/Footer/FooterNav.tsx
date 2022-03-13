@@ -51,7 +51,7 @@ class UserNav extends React.Component<UserNavProps, UserNavState> {
       ) : (
         <>
         <NavItem>
-          <NavLink> <Link to='/'> Resturant Posts </Link> </NavLink>
+          <NavLink> <Link to='/main'> Resturant Posts </Link> </NavLink>
         </NavItem>
 
         <NavItem>

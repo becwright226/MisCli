@@ -23,7 +23,7 @@ class SiteBar extends React.Component<SiteBarProps, SiteBarState> {
 
     return (
         <Navbar dark expand="lg" className='main-nav'>
-            <NavbarBrand href="/">
+            <NavbarBrand href="/main">
                 Home
             </NavbarBrand>
             <Nav className="ml-auto" >

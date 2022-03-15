@@ -1,9 +1,0 @@
-Bronze:
-Build the interface for the rick and morty all characters. An example is in the rickandmortyExample.json
-
-Silver: 
-Get the fetch to work and assign your interface to the json like we did for the ChuckNoris json.
-Create a string to pass to the displayFetchInfo : The morty character is ${name} and the origin is ${origin}
-
-Gold 
-Make the Character displayed from your array to be random

@@ -19,7 +19,7 @@ import PostEdit from "./PostEdit";
 interface PostDisplayProps {
   token: string;
   trigger: boolean;
-  // model: boolean
+  
 }
 
 interface PostDisplayState {
@@ -72,6 +72,7 @@ class PostDisplay extends Component<PostDisplayProps, PostDisplayState> {
 
   componentDidMount = () => {
     this.fetchPosts();
+    
   };
 
   render() {

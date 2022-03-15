@@ -46,6 +46,7 @@ class Main extends Component<MainProps> {
                   <>
                     {" "}
                     <Post
+                     
                       clearLocalStorage={this.props.clearLocalStorage}
                       updateLocalStorage={this.props.updateLocalStorage}
                       token={this.props.token}
@@ -70,6 +71,7 @@ class Main extends Component<MainProps> {
                   <>
                     {" "}
                     <Post
+                      
                       clearLocalStorage={this.props.clearLocalStorage}
                       updateLocalStorage={this.props.updateLocalStorage}
                       token={this.props.token}
@@ -95,6 +97,7 @@ class Main extends Component<MainProps> {
                   <>
                     {" "}
                     <Post
+                      
                       clearLocalStorage={this.props.clearLocalStorage}
                       updateLocalStorage={this.props.updateLocalStorage}
                       token={this.props.token}

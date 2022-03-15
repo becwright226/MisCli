@@ -43,7 +43,7 @@ class RecipeDelete extends Component<RecipeDeleteProps, RecipeDeleteState> {
     }
 
     recipeDelete = (e:any) => {
-        fetch(`http://localhost:2206/post/${this.props.recipe.id}`, {
+        fetch(`http://localhost:2206/recipe/${this.props.recipe.id}`, {
           method: 'DELETE',
           body: JSON.stringify({    
             cuisine: this.state.cuisine,

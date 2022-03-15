@@ -20,6 +20,7 @@ interface PostIndexProps {
     token: string
     clearLocalStorage: () => void
     updateLocalStorage: (newToken: string, newRole: string) => void
+
     
 }
 interface PostIndexState {

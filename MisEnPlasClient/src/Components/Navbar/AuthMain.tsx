@@ -14,6 +14,7 @@ updateLocalStorage: (newToken: string, newRole: string) => void
 clearLocalStorage: () => void
 token: string
 
+
 }
  
 
@@ -31,12 +32,12 @@ class AuthMain extends Component<AuthMainProps> {
               <Nav token={this.props.token} clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage} />
                
               <Routes>
-                    <Route path="/" element={ <> {!this.props.token ? <><Login clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage} token={this.props.token}/> </> : <Main token={this.props.token} clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage} />}</> } />
+                    <Route path="/" element={ <> {!this.props.token ? <><Login clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage} token={this.props.token}/> </> : <Main  token={this.props.token} clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage} />}</> } />
 
-                    <Route path="/login" element={ <> {!this.props.token ? <><Login clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage} token={this.props.token}/> </> : <Main token={this.props.token} clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage} />}</> } />
+                    <Route path="/login" element={ <> {!this.props.token ? <><Login clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage} token={this.props.token}/> </> : <Main  token={this.props.token} clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage} />}</> } />
 
                     <Route path="/signup" element={ <> {!this.props.token ? <><Signup clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage} token={this.props.token}/> </> : 
-                    <Main token={this.props.token} clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage} />}</> } />
+                    <Main  token={this.props.token} clearLocalStorage={this.props.clearLocalStorage} updateLocalStorage={this.props.updateLocalStorage} />}</> } />
 
 
 

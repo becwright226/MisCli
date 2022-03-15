@@ -46,7 +46,7 @@ const App = () => {
 
   const protectedViews = () => {
     return (token === localStorage.getItem('token') ? 
-    <><Main clearLocalStorage={clearLocalStorage} token={token as string} updateLocalStorage={updateLocalStorage} /><SiteBar clearLocalStorage={clearLocalStorage} token={token as string} updateLocalStorage={updateLocalStorage} /></>
+    <><Main  clearLocalStorage={clearLocalStorage} token={token as string} updateLocalStorage={updateLocalStorage} /><SiteBar clearLocalStorage={clearLocalStorage} token={token as string} updateLocalStorage={updateLocalStorage} /></>
     :  <AuthMain updateLocalStorage={updateLocalStorage}  clearLocalStorage={clearLocalStorage} token={token as string}/> 
     )
   }

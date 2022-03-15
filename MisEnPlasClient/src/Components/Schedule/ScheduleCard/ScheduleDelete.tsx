@@ -37,7 +37,7 @@ class ScheduleDelete extends Component<ScheduleDeleteProps, ScheduleDeleteState>
     }
 
     scheduleDelete = (e:any) => {
-        fetch(`http://localhost:2206/post/${this.props.schedule.id}`, {
+        fetch(`http://localhost:2206/schedule/${this.props.schedule.id}`, {
           method: 'DELETE',
           body: JSON.stringify({    
             date:this.state.date,

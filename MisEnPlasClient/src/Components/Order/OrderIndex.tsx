@@ -4,7 +4,7 @@ import OrderCreate from './OrderCreate';
 import OrderDisplay from './OrderDisplay';
 import './Order.css'
 import Main from '../Navbar/Main';
-import SiteBar from '../Navbar/Navbar';
+import SiteBar from '../Navbar/Sidebar';
 
 interface OrderIndexProps {
     token: string
@@ -29,7 +29,7 @@ class OrderIndex extends React.Component<OrderIndexProps, OrderIndexState> {
     render() { 
         return ( 
             <>
-              <SiteBar clearLocalStorage={this.props.clearLocalStorage}  />
+            
               <Container className='order-main' style={{float:'right'}}>
                 <Row>
               <Col md='4'>

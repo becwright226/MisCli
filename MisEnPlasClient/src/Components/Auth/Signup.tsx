@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import "./Auth.css";
-import AuthMain from "./Navbar/AuthMain";
+import AuthMain from "../Navbar/AuthMain";
 
 interface SignupProps {
-  updateLocalStorage: (newToken: string, newRole: string) => void;
+  updateLocalStorage: (newToken: string, newRole: string) => void
+clearLocalStorage: () => void
+token: string
 }
 
 interface SignupState {
@@ -45,7 +47,17 @@ class Signup extends Component<SignupProps, SignupState> {
         }),
       });
       const data = await res.json();
-      this.props.updateLocalStorage(data.token, data.user.role);
+
+      if(res.status===409){
+        alert("Email already registered, please sign in")
+      } else if (res.status===500){
+        alert('Issue registering user, try again')
+      } else {
+        this.props.updateLocalStorage(data.token, data.user.role);
+      }
+
+
+      // this.props.updateLocalStorage(data.token, data.user.role);
 
       this.setState({
         firstName: "",
@@ -55,16 +67,16 @@ class Signup extends Component<SignupProps, SignupState> {
         role: "BOH",
       });
     } catch (error) {
-      console.log({ error });
+      console.error()
     }
   };
 
   render() {
     return (
       <>
-        <AuthMain updateLocalStorage={this.props.updateLocalStorage} />
-        <div className="auth-main p-4" style={{alignItems:'center'}}>
-          <Form onSubmit={this.handleSubmit} className="auth-form p-5">
+        {/* <AuthMain updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} /> */}
+        <div className="auth-main pt-4 p-4" style={{alignItems:'center'}}>
+          <Form onSubmit={this.handleSubmit} className="auth-form  m-5 p-3 text-center">
             <h1 className="signhead text-center">Signup</h1>
             <FormGroup className="form text-center">
               <Label for="firstname">First Name</Label>
@@ -101,11 +113,11 @@ class Signup extends Component<SignupProps, SignupState> {
             <FormGroup className="form text-center">
               <Label for="email">Email</Label>
               <Input
-                className="input-md"
+                className="input text-center"
                 style={{ backgroundColor: "burlywood", width: "75%", marginLeft: '13%' }}
                 type="email"
                 name="email"
-                placeholder="enter password"
+                placeholder="enter email"
                 onChange={(e: any) => this.setState({ email: e.target.value })}
                 value={this.state.email}
                 required
@@ -114,7 +126,7 @@ class Signup extends Component<SignupProps, SignupState> {
             <FormGroup className="form text-center">
               <Label className="password">Password</Label>
               <Input
-                className="input-md"
+                className="input text-center"
                 style={{ backgroundColor: "burlywood", width: "75%", marginLeft: '13%' }}
                 type="password"
                 name="password"
@@ -130,11 +142,10 @@ class Signup extends Component<SignupProps, SignupState> {
             <FormGroup className="form text-center">
               <Label for="role">Role</Label>
               <Input
-                className="input-md"
+                className="input text-center"
                 type="select"
                 name="role"
                 style={{ backgroundColor: "burlywood", width: "75%", marginLeft: '13%'}}
-                placeholder="enter password"
                 onChange={(e: any) => this.setState({ role: e.target.value })}
                 value={this.state.role}
                 required
@@ -147,13 +158,13 @@ class Signup extends Component<SignupProps, SignupState> {
                 </option>
               </Input>
             </FormGroup>
-            <Button type="submit" className="btn">
+            <Button type="submit" className="btn" style={{backgroundColor:'#886382'}}>
               {" "}
               Submit{" "}
             </Button>
             <br />
             <p>
-              <a href="/login">Already a user? Sign-in</a>
+              <a href="/login" style={{color:'rgb(224, 231, 224)'}}>Already a user? Sign-in</a>
             </p>
           </Form>
         </div>

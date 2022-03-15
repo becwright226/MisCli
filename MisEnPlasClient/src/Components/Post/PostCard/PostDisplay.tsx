@@ -19,7 +19,7 @@ import PostEdit from "./PostEdit";
 interface PostDisplayProps {
   token: string;
   trigger: boolean;
-  // model: boolean
+  
 }
 
 interface PostDisplayState {
@@ -72,6 +72,7 @@ class PostDisplay extends Component<PostDisplayProps, PostDisplayState> {
 
   componentDidMount = () => {
     this.fetchPosts();
+    
   };
 
   render() {
@@ -112,32 +113,29 @@ class PostDisplay extends Component<PostDisplayProps, PostDisplayState> {
             </CardBody>
             <CardFooter className="postcard-footer text-center">
               <Row className="postcard-button">
-
-
-                <Col>
-                  <ComIndex
-                    token={this.props.token}
-                    post={post}
-                    trigger={this.props.trigger}
-                  />
-                </Col>
-                <Col>
+                <Col md='12'>
                   <PostEdit
                     post={post}
                     token={this.props.token}
                     fetchPosts={this.fetchPosts}
                   />
-                </Col>
-                <Col>
+                
                   <PostDelete
                     token={this.props.token}
                     fetchPosts={this.fetchPosts}
                     post={post}
                   />
                 </Col>
+                <br/>
               </Row>
             </CardFooter>
-            <Col></Col>
+            <Col md='12' className="col-sm-12 col-md-12 col-sm-12" >
+                  <ComIndex
+                    token={this.props.token}
+                    post={post}
+                    trigger={this.props.trigger}
+                  />
+                </Col>
           </Card>
         );
       });

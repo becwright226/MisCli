@@ -4,7 +4,7 @@ import DiaryCreate from './DiaryCreate';
 import DiaryDisplay from './DiaryDisplay';
 import './Diary.css'
 import Main from '../Navbar/Main';
-import SiteBar from '../Navbar/Navbar';
+import SiteBar from '../Navbar/Sidebar';
 
 interface DiaryProps {
     token:string
@@ -30,7 +30,6 @@ class Diary extends Component<DiaryProps, DiaryState> {
     render() { 
         return ( 
             <>
-            <SiteBar clearLocalStorage={this.props.clearLocalStorage}  />
             <Container className='diary-main' style={{float:'right'}}>
             <Row>
           <Col md='4'>

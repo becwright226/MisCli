@@ -130,21 +130,14 @@ class SchedDisplay extends Component<SchedDisplayProps, SchedDisplayState> {
             <CardFooter className="schedcard-footer text-center">
               <Row className="schedcard-button">
                
-               <Col md='4'>
-               <Log 
-               token={this.props.token}
-               schedule={schedule}
-               trigger={this.props.trigger}
-               />
-               </Col>
-                <Col md='4' className="sched pl-5">
+          
+                <Col md='12' className="sched pl-5">
                   <ScheduleEdit
                     schedule={schedule}
                     token={this.props.token}
                     fetchScheds={this.fetchScheds}
                   />
-                </Col>
-                <Col md='4' className="sched pr-4">
+                
                   <ScheduleDelete
                     token={this.props.token}
                     fetchScheds={this.fetchScheds}
@@ -153,7 +146,13 @@ class SchedDisplay extends Component<SchedDisplayProps, SchedDisplayState> {
                 </Col>
               </Row>
             </CardFooter>
-            <Col></Col>
+            <Col md='12' className="col-sm-12 col-md-12 col-sm-12">
+               <Log 
+               token={this.props.token}
+               schedule={schedule}
+               trigger={this.props.trigger}
+               />
+               </Col>
           </Card>
         );
       });

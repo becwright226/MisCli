@@ -8,18 +8,19 @@ import {
     Col,
     CardHeader
 } from 'reactstrap';
-import Footer from '../Footer/Footer';
 import PostDisplay from './PostCard/PostDisplay'
 import PostCreate from './PostCreate';
 import './Post.css'
 import PostEdit from './PostCard/PostEdit';
+import SiteBar from '../Navbar/Sidebar';
 
 
 
 interface PostIndexProps {
     token: string
     clearLocalStorage: () => void
-    
+    updateLocalStorage: (newToken: string, newRole: string) => void
+
     
 }
 interface PostIndexState {
@@ -45,7 +46,8 @@ class PostIndex extends Component <PostIndexProps, PostIndexState> {
     render() { 
         return ( 
             <>
-          <Container className='post-main' style={{float:'right'}}>
+          <Container className='post-main col-sm-12 col-md-12 col-lg-8' style={{float:'right'}}>
+              
               <Row>
               <Col md='4'>
              <PostCreate triggerMethod={this.triggerMethod} token={this.props.token}/>

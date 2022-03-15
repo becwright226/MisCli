@@ -40,12 +40,11 @@ class ComIndex extends Component<ComIndexProps, ComIndexState> {
 
     render() { 
         return ( 
-            <Container>
-                  <Row>
-                 <Col >
-                        <ComCreate triggerMethod={this.triggerMethod} token={this.props.token} post={this.props.post}/>
-                    </Col>
-               </Row>
+            <>
+           
+                 
+            <ComCreate triggerMethod={this.triggerMethod} token={this.props.token} post={this.props.post}/>
+            <Container>     
                <Row>
                     <Col>
                         <ComDisplay post={this.props.post} token={this.props.token} trigger={this.props.trigger} />
@@ -53,6 +52,7 @@ class ComIndex extends Component<ComIndexProps, ComIndexState> {
                 </Row>
                 
             </Container>
+            </>
          );
     }
 }

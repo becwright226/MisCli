@@ -94,29 +94,25 @@ class LogDisplay extends Component<LogDisplayProps, LogDisplayState> {
       return this.state.logs.map((log: any, index: any) => {
         return (
 
-<>
+<div className="wrapper text-center mx-auto" style={{display:'flex', alignItems: 'center', justifyContent: 'center'}}>
 
-    <Row className="postcard-button">
-        <Col>
-        <Button
-    className="postcard-title m-2 pl-4 pr-4"
-    id='toggler'
+
+        <Card
+    className="m-1"
+  
     
     
     style={{
-      backgroundColor: "#ac7b53",
+      backgroundColor: "rgb(99, 128, 99)",
       color: "black",
       opacity: "90%",
       fontFamily: "Faustina",
+      border: "solid #a7719e 1px",
     }}
     key={index}
-    >Work Log</Button>      
-    </Col>
-         </Row>
-<UncontrolledCollapse toggler="#toggler">
+    >    
 
-<Card>
-<CardHeader>{log.date}----{log.time}min to complete</CardHeader>
+<CardHeader className="text-center">{log.date}----{log.time}min to complete</CardHeader>
   <CardBody
   className="postcard-content text-center"
   style={{
@@ -125,32 +121,34 @@ class LogDisplay extends Component<LogDisplayProps, LogDisplayState> {
  fillOpacity: "100%"}}
   >
       {log.task}
-      <Row>
-    <Col>
-    
+      </CardBody>
+  <CardFooter span>
+  <Col md='12'>
+  <div style={{float:'left'}} >
     <LogEdit
                log={log}
                token={this.props.token}
                fetchLogs={this.fetchLogs}
              />
-    </Col>
-    </Row>
-    <Row>
-    <Col>
+  </div>
+  <div style={{float:'right'}}  >
+    
+   
     <LogDelete
                token={this.props.token}
                fetchLogs={this.fetchLogs}
                log={log}
              />
+  </div> 
     </Col>
-    </Row>
-  </CardBody>
+  
+    </CardFooter>
+  
 </Card>
 
-</UncontrolledCollapse>
 
 
-</>
+</div>
 
 
 

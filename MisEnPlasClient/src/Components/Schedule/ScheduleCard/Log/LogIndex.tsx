@@ -36,21 +36,18 @@ class Log extends Component<LogProps, LogState> {
 
     render() { 
         return ( 
-        <Container>
-
-            <Row>
-                <Col>
+        
+            <div>
                 <LogCreate token={this.props.token} triggerMethod={this.triggerMethod} schedule={this.props.schedule} />
-                </Col>
-               </Row>
+            <Container>   
                <Row> 
                 <Col>
                 <LogDisplay schedule={this.props.schedule} token={this.props.token} trigger={this.props.trigger} />
                 </Col>
-            </Row>
-
-           
-        </Container> );
+            </Row>  
+        </Container> 
+        </div>
+        );
     }
 }
  

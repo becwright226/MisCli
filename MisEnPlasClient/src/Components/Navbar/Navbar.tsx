@@ -1,58 +1,93 @@
-import React from 'react';
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import './Main.css'
+import React from 'react'
+import '../Navbar/Main.css'
+// import Navbar from 'react-bootstrap/NavBar'
+// import Nav from 'react-bootstrap/Nav'
+// import { NavItem, NavLink } from 'react-bootstrap'
+// import NavDropdown from 'react-bootstrap/NavDropdown'
 
-interface SiteBarProps {
-    clearLocalStorage: () => void
-}
-interface SiteBarState {
-    token:string
+
+import "react-pro-sidebar/dist/css/styles.css";
+
+import { BrowserRouter, Link} from 'react-router-dom'
+import { Navbar, NavDropdown, NavLink, NavItem, Nav ,Button, ToggleButton   } from 'react-bootstrap';
+import { GiCook } from 'react-icons/gi';
+import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
+import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
+
+
+
+interface UserNavProps {
+  clearLocalStorage: () => void,
+  token: string | null
+  updateLocalStorage: (newToken: string, newRole: string) => void
 }
  
-
- 
-class SiteBar extends React.Component<SiteBarProps, SiteBarState> {
-    constructor(props: SiteBarProps) {
-        super(props);
-    
-    }
-
-    
-    render() { 
-
-    return (
-        <Navbar dark expand="lg" className='main-nav'>
-            <NavbarBrand href="/">
-                Home
-            </NavbarBrand>
-            <Nav className="ml-auto" >
-                <NavItem>
-                    <NavLink><Link to='/order' className="site-link"> Orders </Link></NavLink>
-                </NavItem>
-                <NavItem>
-                   <NavLink><Link to="/recipe" className="site-link"> Recipes </Link></NavLink> 
-                </NavItem>
-                <NavItem>
-                    <NavLink><Link to="/diary" className="site-link"> Shift Diary </Link></NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink><Link to="/schedule" className="site-link"> Schedules </Link></NavLink>
-                </NavItem>   
-                <NavItem>
-                <NavLink> <Button onClick={this.props.clearLocalStorage}> Logout </Button></NavLink>
-                </NavItem>
-            </Nav>
-
-    
-          
-        </Navbar>
-    );
+interface UserNavState {
+  
 }
-};
+ 
+class UserNav extends React.Component<UserNavProps, UserNavState> {
+  constructor(props: UserNavProps) {
+    super(props);
+    this.state = {  };
+  }
+  render() { 
+    return ( 
 
-export default SiteBar;
+  <Navbar  collapseOnSelect expand='lg' className='main-nav' variant='dark'>
+  <Navbar.Brand href={'/login'}  >Mis En Plas <GiCook style={{color:'#a7719e'}}/> </Navbar.Brand>
+  <NavbarToggle/>
+  <NavbarCollapse aria-controls="responsive-navbar-nav"  >
 
-///<NavItem>
-//<NavLink onClick={this.handleClick}><Link to="/logout" className="site-link"> Logout </Link></NavLink>
-//</NavItem>
+    <Nav >
+
+      {!this.props.token ? (
+        <>
+        <NavItem >
+          <NavLink> <Link to='/signup' style={{color:'rgb(224, 231, 224)'}}> SignUp </Link> </NavLink>
+        </NavItem>
+        <NavItem >
+          <NavLink> <Link to='/login' style={{color:'rgb(224, 231, 224)'}}> Login </Link> </NavLink>
+        </NavItem>
+        </>
+      ) : (
+        <>
+        <NavItem>
+          <NavLink> <Link to='/login' style={{color:'rgb(41, 61, 41)'}}> Resturant Posts </Link> </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink> <Link to='/order' style={{color:'rgb(41, 61, 41)'}}> Orders </Link> </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink> <Link to='/recipe' style={{color:'rgb(41, 61, 41)'}}> Recipes </Link> </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink> <Link to='/diary' style={{color:'rgb(41, 61, 41)'}}> Shift Diary </Link> </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink> <Link to='/schedule' style={{color:'rgb(41, 61, 41)'}}> Schedules </Link> </NavLink>
+        </NavItem> 
+
+        <NavItem> 
+        <NavLink> <Link to='/logout' onClick={this.props.clearLocalStorage} style={{color:'rgb(41, 61, 41)'}}> Logout </Link> </NavLink>
+        </NavItem>
+
+</>
+
+      )}
+     
+    </Nav>
+  </NavbarCollapse>
+    
+  </Navbar>
+
+
+   );
+  }
+}
+ 
+export default UserNav;

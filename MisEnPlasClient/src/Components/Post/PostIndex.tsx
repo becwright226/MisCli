@@ -12,7 +12,7 @@ import PostDisplay from './PostCard/PostDisplay'
 import PostCreate from './PostCreate';
 import './Post.css'
 import PostEdit from './PostCard/PostEdit';
-import SiteBar from '../Navbar/Navbar';
+import SiteBar from '../Navbar/Sidebar';
 
 
 

@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'reactstrap';
 import SchedDisplay from './ScheduleCard/SchedDisplay';
 import SchedCreate from './ScheduleCreate';
 import './Schedule.css'
-import SiteBar from '../Navbar/Navbar';
+import SiteBar from '../Navbar/Sidebar';
 
 
 

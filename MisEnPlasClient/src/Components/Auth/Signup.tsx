@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import "./Auth.css";
-import AuthMain from "./Navbar/AuthMain";
+import AuthMain from "../Navbar/AuthMain";
 
 interface SignupProps {
   updateLocalStorage: (newToken: string, newRole: string) => void
@@ -113,11 +113,11 @@ class Signup extends Component<SignupProps, SignupState> {
             <FormGroup className="form text-center">
               <Label for="email">Email</Label>
               <Input
-                className="input-md"
+                className="input text-center"
                 style={{ backgroundColor: "burlywood", width: "75%", marginLeft: '13%' }}
                 type="email"
                 name="email"
-                placeholder="enter password"
+                placeholder="enter email"
                 onChange={(e: any) => this.setState({ email: e.target.value })}
                 value={this.state.email}
                 required
@@ -126,7 +126,7 @@ class Signup extends Component<SignupProps, SignupState> {
             <FormGroup className="form text-center">
               <Label className="password">Password</Label>
               <Input
-                className="input-md"
+                className="input text-center"
                 style={{ backgroundColor: "burlywood", width: "75%", marginLeft: '13%' }}
                 type="password"
                 name="password"
@@ -142,11 +142,10 @@ class Signup extends Component<SignupProps, SignupState> {
             <FormGroup className="form text-center">
               <Label for="role">Role</Label>
               <Input
-                className="input-md"
+                className="input text-center"
                 type="select"
                 name="role"
                 style={{ backgroundColor: "burlywood", width: "75%", marginLeft: '13%'}}
-                placeholder="enter password"
                 onChange={(e: any) => this.setState({ role: e.target.value })}
                 value={this.state.role}
                 required
@@ -165,7 +164,7 @@ class Signup extends Component<SignupProps, SignupState> {
             </Button>
             <br />
             <p>
-              <a href="/login">Already a user? Sign-in</a>
+              <a href="/login" style={{color:'rgb(224, 231, 224)'}}>Already a user? Sign-in</a>
             </p>
           </Form>
         </div>

@@ -3,7 +3,7 @@ import { Button, Col, Container, Row } from "reactstrap";
 import Auth from "./Components/Auth/Auth";
 import { useState, useEffect } from "react";
 import Main from "./Components/Navbar/Main";
-import AuthMain from "./Components/Auth/Navbar/AuthMain";
+import AuthMain from "./Components/Navbar/AuthMain";
 import Post from "./Components/Post/PostCreate";
 import { userInfo } from "os";
 import { request } from "http";
@@ -15,8 +15,8 @@ import OrderIndex from "./Components/Order/OrderIndex";
 import Recipe from "./Components/Recipe/RecipeIndex";
 import Diary from "./Components/Diary/DiaryIndex";
 import Sched from "./Components/Schedule/SchedIndex";
-import SiteBar from "./Components/Navbar/Navbar";
-import UserNav from "./Components/Footer/FooterNav";
+import SiteBar from "./Components/Navbar/Sidebar";
+import UserNav from "./Components/Navbar/Navbar";
 
 
 const App = () => {

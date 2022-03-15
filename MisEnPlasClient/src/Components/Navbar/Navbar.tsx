@@ -1,91 +1,93 @@
-import React, {Component, useState} from 'react';
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
-import {
-    Menu,
-    MenuItem,
-    ProSidebar,
-    SidebarHeader,
-    SubMenu,
-  } from "react-pro-sidebar";
-  import "react-pro-sidebar/dist/css/styles.css";
-  import { Link } from "react-router-dom"
+import React from 'react'
+import '../Navbar/Main.css'
+// import Navbar from 'react-bootstrap/NavBar'
+// import Nav from 'react-bootstrap/Nav'
+// import { NavItem, NavLink } from 'react-bootstrap'
+// import NavDropdown from 'react-bootstrap/NavDropdown'
 
-import './Main.css'
-import {BiFoodMenu, BiTachometer} from 'react-icons/bi'
-import { GiCook, GiPayMoney } from 'react-icons/gi';
-import {SiLivejournal} from 'react-icons/si';
-import {GrRestaurant} from 'react-icons/gr';
-import {AiOutlineSchedule} from 'react-icons/ai';
-import {IoRestaurant} from 'react-icons/io5';
-import { MdOutlineFoodBank} from 'react-icons/md'
-import { ToggleButton } from 'react-bootstrap';
 
-interface SiteBarProps {
-    clearLocalStorage: () => void
-    token:string
-    updateLocalStorage: (newToken: string, newRole: string) => void
-}
-interface SiteBarState {
-    collapsed: boolean
+import "react-pro-sidebar/dist/css/styles.css";
+
+import { BrowserRouter, Link} from 'react-router-dom'
+import { Navbar, NavDropdown, NavLink, NavItem, Nav ,Button, ToggleButton   } from 'react-bootstrap';
+import { GiCook } from 'react-icons/gi';
+import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
+import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
+
+
+
+interface UserNavProps {
+  clearLocalStorage: () => void,
+  token: string | null
+  updateLocalStorage: (newToken: string, newRole: string) => void
 }
  
-
+interface UserNavState {
+  
+}
  
-class SiteBar extends Component<SiteBarProps, SiteBarState> {
-    constructor(props: SiteBarProps) {
-        super(props);
-        this.state = {
-            collapsed: false
-        }
-    
-    }
+class UserNav extends React.Component<UserNavProps, UserNavState> {
+  constructor(props: UserNavProps) {
+    super(props);
+    this.state = {  };
+  }
+  render() { 
+    return ( 
 
+  <Navbar  collapseOnSelect expand='lg' className='main-nav' variant='dark'>
+  <Navbar.Brand href={'/login'}  >Mis En Plas <GiCook style={{color:'#a7719e'}}/> </Navbar.Brand>
+  <NavbarToggle/>
+  <NavbarCollapse aria-controls="responsive-navbar-nav"  >
 
+    <Nav >
 
-
-    collapse = () => {
-        this.setState({collapsed: !this.state.collapsed})
-    }
-
-    
-
-
-    render() { 
-
-    return (
-
-
-
-
-        <><ProSidebar collapsed collapsedWidth={'16%'}  breakPoint='md' style={{height:'100vh', fontFamily:'Faustina, serif', opacity: '95%' }} className='side col-lg-2' >
-            <Nav aria-controls="responsive-navbar-nav">
-            <Menu id='responsive-navbar-nav' iconShape="square" style={{height:'100vh',backgroundColor:'rgb(41, 61, 41)' }}>
-        
-                <MenuItem icon={<SiLivejournal/>}> 
-                <Link to="/diary" className="site-link"> Shift Diary </Link> </MenuItem>
-                
-                
-                    <MenuItem icon={<MdOutlineFoodBank/>} ><Link to='/login' className="site-link"></Link> Restaurant Posts </MenuItem>
-            
-                
-                    <MenuItem icon={<AiOutlineSchedule />} ><Link to="/schedule" className="site-link"> Schedules </Link></MenuItem>
-                  
-              
-                    <MenuItem icon={<BiFoodMenu/>} ><Link to="/recipe" className="site-link"> Recipes Main </Link></MenuItem>
-                    
-               
-                    <MenuItem icon={<GiPayMoney />} ><Link to='/order' className="site-link"> Orders </Link> </MenuItem>
-            </Menu>
-            </Nav>
-        </ProSidebar>
+      {!this.props.token ? (
+        <>
+        <NavItem >
+          <NavLink> <Link to='/signup' style={{color:'rgb(224, 231, 224)'}}> SignUp </Link> </NavLink>
+        </NavItem>
+        <NavItem >
+          <NavLink> <Link to='/login' style={{color:'rgb(224, 231, 224)'}}> Login </Link> </NavLink>
+        </NavItem>
         </>
+      ) : (
+        <>
+        <NavItem>
+          <NavLink> <Link to='/login' style={{color:'rgb(41, 61, 41)'}}> Resturant Posts </Link> </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink> <Link to='/order' style={{color:'rgb(41, 61, 41)'}}> Orders </Link> </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink> <Link to='/recipe' style={{color:'rgb(41, 61, 41)'}}> Recipes </Link> </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink> <Link to='/diary' style={{color:'rgb(41, 61, 41)'}}> Shift Diary </Link> </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink> <Link to='/schedule' style={{color:'rgb(41, 61, 41)'}}> Schedules </Link> </NavLink>
+        </NavItem> 
+
+        <NavItem> 
+        <NavLink> <Link to='/logout' onClick={this.props.clearLocalStorage} style={{color:'rgb(41, 61, 41)'}}> Logout </Link> </NavLink>
+        </NavItem>
+
+</>
+
+      )}
+     
+    </Nav>
+  </NavbarCollapse>
     
-     );
-}
-}
+  </Navbar>
 
-export default SiteBar;
 
-///<NavItem>
-//<NavLink onClick={this.handleClick}><Link to="/logout" className="site-link"> Logout </Link></NavLink>
-//</NavItem>
+   );
+  }
+}
+ 
+export default UserNav;

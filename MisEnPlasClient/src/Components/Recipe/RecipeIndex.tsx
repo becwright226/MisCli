@@ -5,7 +5,7 @@ import RecipeCreate from './RecipeCreate';
 import RecipeDisplay from './RecipeDisplay';
 import './Recipe.css'
 import Main from '../Navbar/Main';
-import SiteBar from '../Navbar/Navbar';
+import SiteBar from '../Navbar/Sidebar';
 
 interface RecipeProps {
     token:string

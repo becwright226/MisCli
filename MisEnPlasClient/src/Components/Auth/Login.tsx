@@ -2,8 +2,7 @@ import React, { Component, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import "./Auth.css";
-import AuthMain from "./Navbar/AuthMain";
-import NavigationHelper from "./NavigateHelper";
+
 
 interface LoginProps {
   updateLocalStorage: (newToken: string, newRole: string) => void
@@ -90,7 +89,7 @@ class Login extends Component<LoginProps, LoginState> {
               <Label className="password">Password</Label>
               <Input
                 style={{ backgroundColor: "burlywood", width: "75%", marginLeft: '13%' }}
-                className="input"
+                className="input text-center"
                 type="password"
                 name="password"
                 placeholder="enter password"
@@ -105,15 +104,14 @@ class Login extends Component<LoginProps, LoginState> {
               <Label for="role">Role</Label>
               <Input
                 style={{ backgroundColor: "burlywood", width: "75%", marginLeft: '13%' }}
-                className="input"
+                className="input text-center"
                 type="select"
                 name="role"
-                placeholder="enter password"
                 onChange={(e: any) => this.setState({ role: e.target.value })}
                 value={this.state.role}
                 required
               >
-                <option style={{ backgroundColor: "burlywood", width: "75%" }}>
+                <option style={{ backgroundColor: "burlywood", width: "75%" }} className="text-center">
                   {" "}
                   BOH{" "}
                 </option>
@@ -133,7 +131,7 @@ class Login extends Component<LoginProps, LoginState> {
             </Button>
             <br />
             <p>
-              <a href="/signup">New user? Sign-up</a>
+              <a href="/signup" style={{color:'rgb(224, 231, 224)'}}>New user? Sign-up</a>
             </p>
           </Form>
         </div>

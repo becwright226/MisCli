@@ -4,7 +4,7 @@ import DiaryCreate from './DiaryCreate';
 import DiaryDisplay from './DiaryDisplay';
 import './Diary.css'
 import Main from '../Navbar/Main';
-import SiteBar from '../Navbar/Navbar';
+import SiteBar from '../Navbar/Sidebar';
 
 interface DiaryProps {
     token:string

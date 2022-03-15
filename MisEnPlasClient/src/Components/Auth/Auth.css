@@ -32,9 +32,7 @@
     font-family: 'Faustina', serif;
 }
 
-.auth-div {
-    
-}
+
 
 .input {
     display: flex;
@@ -44,7 +42,7 @@
 }
 
 .footer {
-    background-color: rgb(41, 61, 41);
+    background-color: rgb(81, 102, 81);
     height: .25rem;
      margin-top: 1rem; 
      padding: 1rem; 

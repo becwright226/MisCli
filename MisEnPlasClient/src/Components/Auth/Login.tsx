@@ -51,6 +51,8 @@ class Login extends Component<LoginProps, LoginState> {
         alert("Incorrect Email or Password")
       } else if (res.status===444){
         alert('Failed to log user in, try again')
+      } else if (res.status===400){
+        alert("Incorrect Email or Password")
       } else {
         this.props.updateLocalStorage(data.token, data.user.role);
       }

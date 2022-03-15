@@ -1,25 +1,46 @@
 import React, { Component } from 'react'
-import { Container } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 import DiaryCreate from './DiaryCreate';
+import DiaryDisplay from './DiaryDisplay';
+import './Diary.css'
+import Main from '../Navbar/Main';
+import SiteBar from '../Navbar/Sidebar';
 
 interface DiaryProps {
     token:string
+    clearLocalStorage: () => void
 }
  
 interface DiaryState {
-    
+    trigger: boolean 
 }
  
 class Diary extends Component<DiaryProps, DiaryState> {
     constructor(props: DiaryProps) {
         super(props);
-       // this.state = { :  };
+        this.state = { 
+            trigger: false  };
     }
+
+    triggerMethod = () => {
+        this.setState({trigger:!this.state.trigger})
+    }
+
+
     render() { 
         return ( 
-            <Container>
-                <DiaryCreate token={this.props.token} />
-            </Container>
+            <>
+            <Container className='diary-main' style={{float:'right'}}>
+            <Row>
+          <Col md='4'>
+          <DiaryCreate triggerMethod={this.triggerMethod} token={this.props.token} />
+          </Col> 
+              <Col md='8'>
+                 <DiaryDisplay token={this.props.token} trigger={this.state.trigger}/> 
+              </Col>      
+          </Row>
+        </Container></>
+            
          );
     }
 }

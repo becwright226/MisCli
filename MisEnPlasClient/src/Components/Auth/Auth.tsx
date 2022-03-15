@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { Component } from 'react';
-import { Container, Form } from 'reactstrap';
 import Login from './Login';
-import AuthBar from './Navbar/AuthNav';
 import Signup from './Signup';
 import './Auth.css'
-import AuthMain from './Navbar/AuthMain';
+
 
 interface AuthProps {
-    updateLocalStorage: (newToken: string) => void
+  updateLocalStorage: (newToken: string, newRole: string) => void
+  clearLocalStorage: () => void
+  token: string
+  
+  
 }
  
 interface AuthState {
@@ -31,13 +32,11 @@ class Auth extends React.Component<AuthProps, AuthState> {
     render() { 
       const {isLogin} = this.state;
         return ( 
-          <div>
-            {/*<AuthMain updateLocalStorage={this.props.updateLocalStorage}/>*/}
-      
+          <div className='auth-div' >
            {!isLogin ? (
-              <Login updateLocalStorage={this.props.updateLocalStorage}/>
+              <Login updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token}/>
            ):(
-            <Signup updateLocalStorage={this.props.updateLocalStorage} />
+            <Signup updateLocalStorage={this.props.updateLocalStorage} clearLocalStorage={this.props.clearLocalStorage} token={this.props.token} />
            )
            }
 

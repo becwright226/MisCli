@@ -1,25 +1,47 @@
 import React, { Component } from 'react'
-import { Container } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 import OrderCreate from './OrderCreate';
+import OrderDisplay from './OrderDisplay';
+import './Order.css'
+import Main from '../Navbar/Main';
+import SiteBar from '../Navbar/Sidebar';
 
 interface OrderIndexProps {
     token: string
+    clearLocalStorage:()=>void
 }
  
-//interface OrderIndexState {
-    
-//}
+interface OrderIndexState {
+    trigger: boolean 
+}
  
-class OrderIndex extends React.Component<OrderIndexProps> {
+class OrderIndex extends React.Component<OrderIndexProps, OrderIndexState> {
     constructor(props: OrderIndexProps) {
         super(props);
-       // this.state = { :  };
+        this.state = {
+            trigger: false };
     }
+
+    triggerMethod = () => {
+        this.setState({trigger:!this.state.trigger})
+    }
+
     render() { 
         return ( 
-            <Container>
-                <OrderCreate token={this.props.token}/>
+            <>
+            
+              <Container className='order-main' style={{float:'right'}}>
+                <Row>
+              <Col md='4'>
+              <OrderCreate triggerMethod={this.triggerMethod} token={this.props.token}/>
+              </Col> 
+                  <Col md='8'>
+                     <OrderDisplay token={this.props.token} trigger={this.state.trigger} /> 
+                  </Col>      
+              </Row>
             </Container>
+            </>
+          
          );
     }
 }

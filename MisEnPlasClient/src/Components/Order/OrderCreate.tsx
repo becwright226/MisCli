@@ -4,6 +4,7 @@ import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 interface OrderCreateProps {
    token: string 
+   triggerMethod: Function
 }
  
 interface OrderCreateState {
@@ -34,8 +35,8 @@ class OrderCreate extends Component<OrderCreateProps, OrderCreateState> {
             date: this.state.date,
             itemCount: this.state.itemCount,
             desc: this.state.desc,
-            isEvent: this.state.isEvent,
-            eventName: Boolean(this.state.eventName),
+            isEvent: Boolean(this.state.isEvent),
+            eventName: this.state.eventName,
             cost: this.state.cost
         }
         try {
@@ -48,6 +49,9 @@ class OrderCreate extends Component<OrderCreateProps, OrderCreateState> {
                 })
             })
             const data = await res.json()
+            console.log(data)
+
+            this.props.triggerMethod()
 
             this.setState({
                 date: '',
@@ -58,13 +62,13 @@ class OrderCreate extends Component<OrderCreateProps, OrderCreateState> {
             cost: 0   
             })
         } catch (error) {
-            console.log(error)
+            console.log({error})
         }
     }
     render() { 
         return ( 
             <>
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit} className='orderForm m-4 p-3' style={{backgroundColor:' rgb(41, 61, 41)', color:'#bbabc2', opacity:'90%', fontFamily:'Faustina', borderRadius: '4px'}}>
             <FormGroup>
                         <Label for="date">Date</Label>
                         <Input id="li_date" type="date" name="date" placeholder="enter the date" onChange={(e:any) => this.setState({date: e.target.value})} value={this.state.date} />
@@ -78,10 +82,10 @@ class OrderCreate extends Component<OrderCreateProps, OrderCreateState> {
                         <Input id="li_desc" type='textarea' name="description" placeholder="ex. 3 cases bacon, 18 dz eggs, 10qt juice" onChange={(e:any) => this.setState({desc: e.target.value})} value={this.state.desc} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="role">Is there an event this week?</Label>
-                        <Input id="li_role" type='select' name="role"  onChange={(e:any) => this.setState({isEvent: e.target.value})} value={this.state.isEvent}> 
+                        <Label for="isEvent">Is there an event this week?</Label>
+                        <Input id="li_isEvent" type='select' name="isEvent"  onChange={(e:any) => this.setState({isEvent: e.target.value})} value={this.state.isEvent}> 
                         <option value='true'> Yes </option>
-                        <option value='false'> No </option>
+                        <option value='false' > No </option>
                         </Input>
                     </FormGroup>
                     <FormGroup>
@@ -92,7 +96,7 @@ class OrderCreate extends Component<OrderCreateProps, OrderCreateState> {
                         <Label for="cost">Cost</Label>
                         <Input id="li_cost" type='text' name="cost" placeholder="ex. $2,500.88" onChange={(e:any) => this.setState({cost: e.target.value})} value={this.state.cost} />
                     </FormGroup>
-                    <Button type="submit" className="btn" > Submit </Button>
+                    <Button type="submit" className="btn" style={{backgroundColor:'#a7719e', color: 'black'}}> Submit </Button>
             </Form>
           
             </>

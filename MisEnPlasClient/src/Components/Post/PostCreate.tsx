@@ -15,9 +15,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 interface PostCreateProps {
     token: string
+    triggerMethod: Function
 }
  
 interface PostCreateState {
+    //id?: string,
     date: string;
     title: string;
     content: string;
@@ -29,6 +31,7 @@ class Post extends React.Component<PostCreateProps, PostCreateState> {
     constructor(props: PostCreateProps) {
         super(props);
         this.state = { 
+            // id: '',
             date: '', 
             title: '',
             content: '',
@@ -54,6 +57,13 @@ class Post extends React.Component<PostCreateProps, PostCreateState> {
               })
             })
             const data = await res.json()
+            this.props.triggerMethod()
+            this.setState({
+                date: '', 
+                title: '',
+                content: '',
+                role: 'All Staff'
+            })
            
         } catch (error) {
             console.log({error})
@@ -62,8 +72,8 @@ class Post extends React.Component<PostCreateProps, PostCreateState> {
 
     render() { 
         return ( 
-            <>
-            <Form onSubmit={this.handleSubmit}>
+            <div className='postform m-4 p-3' style={{backgroundColor:' rgb(41, 61, 41)', color:'#bbabc2', opacity:'90%', fontFamily:'Faustina', borderRadius: '4px'}}>
+            <Form onSubmit={this.handleSubmit} >
             <FormGroup>
                         <Label for="date">Date</Label>
                         <Input id="li_date" type="date" name="date" placeholder="enter the date" onChange={(e:any) => this.setState({date: e.target.value})} value={this.state.date} />
@@ -84,10 +94,10 @@ class Post extends React.Component<PostCreateProps, PostCreateState> {
                         <option > All Staff </option>
                         </Input>
                     </FormGroup>
-                    <Button type="submit" className="btn" > Submit </Button>
+                    <Button type="submit" className="btn" style={{backgroundColor:'#a7719e', color: 'black'}} > Submit </Button>
             </Form>
           
-            </>
+            </div>
          );
     }
 }

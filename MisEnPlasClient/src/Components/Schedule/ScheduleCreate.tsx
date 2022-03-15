@@ -4,6 +4,7 @@ import SchedIndex from './SchedIndex';
 
 interface SchedCreateProps {
   token: string  
+  triggerMethod: Function
   
 }
  
@@ -45,6 +46,8 @@ class SchedCreate extends Component<SchedCreateProps, SchedCreateState> {
                       })
                     })
                     const data = await res.json()
+                    console.log(data)
+                    this.props.triggerMethod()
 
                     this.setState({
                         date: '',
@@ -61,7 +64,7 @@ class SchedCreate extends Component<SchedCreateProps, SchedCreateState> {
     render() { 
         return ( 
             <>
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit} className='scheduleForm m-4 p-3' style={{backgroundColor:' rgb(41, 61, 41)', color:'#bbabc2', opacity:'90%', fontFamily:'Faustina', borderRadius: '4px'}}>
             <FormGroup>
                         <Label for="date">Date</Label>
                         <Input id="li_date" type="date" name="date" placeholder="enter the date" onChange={(e:any) => this.setState({date: e.target.value})} value={this.state.date} />
@@ -76,13 +79,9 @@ class SchedCreate extends Component<SchedCreateProps, SchedCreateState> {
                     </FormGroup>
                     <FormGroup>
                         <Label for="empAssign">Employee Assignment</Label>
-                        <Input id="li_empAssign" type='text' name="empAssign" placeholder="ex. Phil, morning crew, etc." onChange={(e:any) => this.setState({empAssign: e.target.value})} value={this.state.empAssign}> 
-                        <option> BOH </option>
-                        <option > FOH </option>
-                        <option > All Staff </option>
-                        </Input>
+                        <Input id="li_empAssign" type='text' name="empAssign" placeholder="ex. Phil, morning crew, etc." onChange={(e:any) => this.setState({empAssign: e.target.value})} value={this.state.empAssign}/> 
                     </FormGroup>
-                    <Button type="submit" className="btn" > Submit </Button>
+                    <Button type="submit" className="btn" style={{backgroundColor:'#a7719e', color: 'black'}}> Submit </Button>
             </Form>
           
             </>
